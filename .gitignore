@@ -11,7 +11,6 @@ buildNumber.properties
 .project
 .settings/
 Report.html
-pom.xml
 screenshots/
 src/test/resources/drivers/bak/
 src/test/results
