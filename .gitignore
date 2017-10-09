@@ -13,7 +13,8 @@ buildNumber.properties
 Report.html
 pom.xml
 screenshots/
-        src/
+src/test/resources/drivers/bak/
+src/test/results
 test-output/
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar

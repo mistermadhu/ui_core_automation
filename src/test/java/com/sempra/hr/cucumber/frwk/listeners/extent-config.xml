@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+	<configuration>
+		<!-- title of the document -->
+		<documentTitle>Reports</documentTitle>
+		<!-- report name - displayed at top-nav -->
+		<reportName>Automation</reportName>
+
+		<!-- report headline - displayed at top-nav, after reportHeadline -->
+		<reportHeadline>Execution Reports</reportHeadline>
+		<!-- custom javascript -->
+		<scripts>
+            <![CDATA[
+                $(document).ready(function() {
+                    
+                });
+            ]]>
+		</scripts>
+
+		<!-- custom styles -->
+		<styles>
+            <![CDATA[
+            .timestamp { display:none }
+         	table.table-results > thead > tr > th:nth-child(2) {
+         		display:none
+         	}
+            ]]>
+		</styles>
+	</configuration>
+</extentreports>
