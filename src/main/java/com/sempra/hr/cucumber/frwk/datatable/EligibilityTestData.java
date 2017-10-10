@@ -13,8 +13,8 @@ public class EligibilityTestData implements Serializable {
 	
 	@Data(name="TC ID")
 	 private String testCaseID;
-	@Data(name="IterationNo")
-	 private String iterationNo;
+	@Data(name="PermutationNo")
+	 private String permutationNo;
 	@Data(name="Scenario Name")
 	 private String scenarioName;
 	@Data(name="RM ID")
@@ -26,9 +26,6 @@ public class EligibilityTestData implements Serializable {
 	
 	public String getTestCaseID() {
 		return testCaseID.replaceAll("\\[", "").replaceAll("\\]","");
-	}
-	public String getIterationNo() {
-		return iterationNo.replaceAll("\\[", "").replaceAll("\\]","");
 	}
 	public String getScenarioName() {
 		return scenarioName.replaceAll("\\[", "").replaceAll("\\]","");
@@ -42,12 +39,15 @@ public class EligibilityTestData implements Serializable {
 	public String getEmployeeName() {
 		return employeeName.replaceAll("\\[", "").replaceAll("\\]","");
 	}
+	public String getPermutationNo() {
+		return permutationNo.replaceAll("\\[", "").replaceAll("\\]","");
+	}
+
 	@Override
 	public String toString() {
-		return "EligibilityTestData [testCaseID=" + testCaseID + ", iterationNo=" + iterationNo + ", scenarioName="
+		return "EligibilityTestData [testCaseID=" + testCaseID + ", permutationNo=" + permutationNo + ", scenarioName="
 				+ scenarioName + ", rmID=" + rmID + ", empID=" + empID + ", employeeName=" + employeeName + "]";
 	}
-	
 
 
 }

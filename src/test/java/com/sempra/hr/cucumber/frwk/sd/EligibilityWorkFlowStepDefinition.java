@@ -1,6 +1,5 @@
 package com.sempra.hr.cucumber.frwk.sd;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +43,7 @@ public class EligibilityWorkFlowStepDefinition {
 		logger.info("Updated data table ="+cdTable);
 		
 		// Load the test data for this Workflow
-		etdObj=(EligibilityTestData)wtObj.getFeatureTestData(EligibilityTestData.class,cdTable.getFeatureID(), cdTable.getTestcaseID(), cdTable.getIterationNo(),FrameworkConstants.IS_COMMON);
+		etdObj=(EligibilityTestData)wtObj.getFeatureTestData(EligibilityTestData.class,cdTable.getFeatureID(), cdTable.getTestcaseID(), cdTable.getPermutationNo(),FrameworkConstants.IS_COMMON);
 		logger.info("Test data loaded="+etdObj);
 		
 	    //Launch Browser

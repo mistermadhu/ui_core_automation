@@ -6,7 +6,7 @@ Given I am on Home Page as Admin
 |Credentials::UserType | Eligibility    |
 |FeatureID             | RM_01          |
 |TestCaseID            | <TC_ID>        |
-|IterationNo           | <IterationNo>  |
+|PermutationNo           | <PermutationNo>  |
 When I click on People from the Menu bar
 And I click on Benefits from the list
 And I click on Life Events
@@ -24,19 +24,19 @@ And I click on Admin Correction link on Enrollments page
 When I click on Eligibility Summary link in My Links dropdown
 Then I should be able to see Eligibility Summary of the employee on a new web page
 Examples: 
-|TC_ID| IterationNo |
-|1234 |1            |
+|TC_ID| PermutationNo |
+|1234 |1             |
 
 
 #Given I am on Home Page as Admin
 #|Credentials::UserType | Eligibility    |
 #|FeatureID             | RM_01          |
 #|TestCaseID            | <TC_ID>        |
-#|IterationNo           | <IterationNo>  |
+#|PermutationNo           | <PermutationNo>  |
 #When I click on People from the Menu bar
 #And I click on Benefits from the list
 #And I click on Life Events
 #Then I enter Employee ID field
 #Examples: 
-#|TC_ID| IterationNo |
+#|TC_ID| PermutationNo |
 #|1234 |1            |

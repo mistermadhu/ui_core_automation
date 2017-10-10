@@ -30,8 +30,8 @@ private static final long serialVersionUID = 1L;
    @Data(name="TestcaseID")
    private String testcaseID;
    
-   @Data(name="IterationNo")
-   private String IterationNo;
+   @Data(name="PermutationNo")
+   private String permutationNo;
    
 
 public String getFeatureID() {
@@ -59,16 +59,21 @@ public String getTestcaseID() {
 	return testcaseID.replaceAll("\\[", "").replaceAll("\\]","");
 }
 
-public String getIterationNo() {
-	return IterationNo.replaceAll("\\[", "").replaceAll("\\]","");
+public static long getSerialversionuid() {
+	return serialVersionUID;
+}
+
+public String getPermutationNo() {
+	return permutationNo.replaceAll("\\[", "").replaceAll("\\]","");
 }
 
 @Override
 public String toString() {
 	return "EligibilityPreConditionDataTable [featureID=" + featureID + ", userType=" + userType + ", userName="
 			+ userName + ", passWord=" + passWord + ", description=" + description + ", testcaseID=" + testcaseID
-			+ ", IterationNo=" + IterationNo + "]";
+			+ ", permutationNo=" + permutationNo + "]";
 }
+
    
    
 }

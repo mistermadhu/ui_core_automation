@@ -9,7 +9,7 @@
 <listener class-name="com.sempra.hr.cucumber.frwk.listeners.ExecutionListener"/>
 </listeners>
   <test name="Sample Test">
-  <parameter name="cucumber.features" value="src/test/resources/features/EmployeeEligibilityfile.feature" />
+  <parameter name="cucumber.features" value="src/test/resources/features/benefits/employeeEligibility.feature" />
   <parameter name="cucumber.tags" value="@Regression" />
   <parameter name="testdata.file" value="Eligibility_TestData.xlsx" />
   <parameter name="isCommon" value="false" />
