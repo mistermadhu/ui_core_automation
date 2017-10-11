@@ -73,7 +73,7 @@ public class FrameworkConstants {
 	/**
 	 * 20 seconds
 	 */
-	public static final int LARGE_TIMEOUT = 20;
+	public static final int LARGE_TIMEOUT = 40;
 
 	/**
 	 * 60 seconds

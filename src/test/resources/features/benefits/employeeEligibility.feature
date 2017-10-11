@@ -3,10 +3,10 @@ Feature: Validation of plans and rates for an employee displayed correctly based
 Scenario Outline: Correct plans and rates shown for an employee based on Benefits Group
 
 Given I am on Home Page as Admin
-|Credentials::UserType | Eligibility    |
-|FeatureID             | RM_01          |
-|TestCaseID            | <TC_ID>        |
-|PermutationNo           | <PermutationNo>  |
+|Credentials::UserType | Eligibility             |
+|FeatureID             | RM_01                   |
+|TestScriptID          | <Test_Script_Id>        |
+|PermutationNumber     | <Permutation_Number>    | 
 When I click on People from the Menu bar
 And I click on Benefits from the list
 And I click on Life Events
@@ -24,8 +24,8 @@ And I click on Admin Correction link on Enrollments page
 When I click on Eligibility Summary link in My Links dropdown
 Then I should be able to see Eligibility Summary of the employee on a new web page
 Examples: 
-|TC_ID| PermutationNo |
-|1234 |1             |
+|Test_Script_Id| Permutation_Number |
+|1234          |1                   |
 
 
 #Given I am on Home Page as Admin

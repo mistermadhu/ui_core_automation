@@ -15,7 +15,7 @@ private static final long serialVersionUID = 1L;
    @Data(name="FeatureID")
    private String featureID;
 
-   @Data(name="UserType")
+   @Data(name="User Type")
    private String userType;
    
    @Data(name="UserName")
@@ -27,10 +27,10 @@ private static final long serialVersionUID = 1L;
    @Data(name="Description")
    private String description;
    
-   @Data(name="TestcaseID")
+   @Data(name="TestScriptID")
    private String testcaseID;
    
-   @Data(name="PermutationNo")
+   @Data(name="PermutationNumber")
    private String permutationNo;
    
 

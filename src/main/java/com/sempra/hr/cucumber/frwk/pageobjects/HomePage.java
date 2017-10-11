@@ -108,7 +108,7 @@ public class HomePage extends BasePage{
 
 	public  void click_LifeEventsMenuItem() throws Exception {
 
-		isElementVisible(driver,lifeEventsMenuItem);
+		isElementClickable(driver,lifeEventsMenuItem);
 		lifeEventsMenuItem.click();
 
 	}

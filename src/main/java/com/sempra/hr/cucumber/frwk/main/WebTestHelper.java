@@ -70,7 +70,7 @@ public class WebTestHelper { // Cucumber runtime creates a default instance of t
 		openUrl();
 	    } catch (Exception e) {
 			// TODO Auto-generated catch block
-			logger.error("Exception while launching the site");
+			logger.error("Exception while launching the site::"+e);
 		}
   }
    public void logExtentScreenCapture(LogStatus ls,String msgTitle, String description)
@@ -200,7 +200,7 @@ public Object loadDataTable(Class class1, DataTable dtObj) {
 			}
 		    if(keyColumnHeaderIndex==-1)
 		    {
-		    	throw new Exception("The Column Header ["+keyColumnHeaderName+"] is not found in data Sheet, Please check the featuer file");
+		    	throw new Exception("The Column Header ["+keyColumnHeaderName+"] is not found in data Sheet, Please check the feature file");
 		    }
 			for(int rowIdx=1;rowIdx<rawTestDataList.size();rowIdx++) //exclude the 1st rows, which is a header
 			{

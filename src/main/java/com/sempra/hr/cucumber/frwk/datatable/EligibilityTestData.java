@@ -11,14 +11,14 @@ public class EligibilityTestData implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Data(name="TC ID")
+	@Data(name="Test_Script_Id")
 	 private String testCaseID;
-	@Data(name="PermutationNo")
+	@Data(name="Permutation_Number")
 	 private String permutationNo;
 	@Data(name="Scenario Name")
 	 private String scenarioName;
-	@Data(name="RM ID")
-	 private String rmID;
+	@Data(name="Feature_Id")
+	 private String featureID;
 	@Data(name="Emp ID")
 	 private String empID;
 	@Data(name="Employee Name")
@@ -31,7 +31,7 @@ public class EligibilityTestData implements Serializable {
 		return scenarioName.replaceAll("\\[", "").replaceAll("\\]","");
 	}
 	public String getRmID() {
-		return rmID.replaceAll("\\[", "").replaceAll("\\]","");
+		return featureID.replaceAll("\\[", "").replaceAll("\\]","");
 	}
 	public String getEmpID() {
 		return empID.replaceAll("\\[", "").replaceAll("\\]","");
@@ -46,7 +46,7 @@ public class EligibilityTestData implements Serializable {
 	@Override
 	public String toString() {
 		return "EligibilityTestData [testCaseID=" + testCaseID + ", permutationNo=" + permutationNo + ", scenarioName="
-				+ scenarioName + ", rmID=" + rmID + ", empID=" + empID + ", employeeName=" + employeeName + "]";
+				+ scenarioName + ", rmID=" + featureID + ", empID=" + empID + ", employeeName=" + employeeName + "]";
 	}
 
 
