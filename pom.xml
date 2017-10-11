@@ -9,7 +9,13 @@
 		<extent.version>2.41.2</extent.version>
         <sl4j.version>1.7.25</sl4j.version>
         <mockito.version>1.10.19</mockito.version>
-        <commons.io.version>2.5</commons.io.version>
+         <commons.io.version>2.5</commons.io.version>
+         <jayway.json.version>2.4.0</jayway.json.version>
+		 <appium.version>4.1.2</appium.version>
+		 <apache.poi.version>3.17</apache.poi.version>
+		 <modelmapper.version>1.1.0</modelmapper.version>
+		 <commons.io.version>2.5</commons.io.version>
+		 <commons.lang.version>2.6</commons.lang.version>
         <selenium.java.version>3.6.0</selenium.java.version>
         <cucumber.cukes.version>1.2.5</cucumber.cukes.version>
 	</properties>
@@ -52,7 +58,7 @@
 		<dependency>
 		    <groupId>commons-io</groupId>
 		    <artifactId>commons-io</artifactId>
-		    <version>2.5</version>
+		    <version>${commons.io.version} </version>
 		</dependency>
 		<!-- <dependency>
 		    <groupId>org.apache.commons</groupId>
@@ -62,36 +68,36 @@
 		<dependency>
 		    <groupId>commons-lang</groupId>
 		    <artifactId>commons-lang</artifactId>
-		    <version>2.6</version>
+		    <version>${commons.lang.version} </version>
 		</dependency>
 		<dependency>
 		    <groupId>com.jayway.jsonpath</groupId>
 		    <artifactId>json-path</artifactId>
-		    <version>2.4.0</version>
+		    <version>${jayway.json.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.appium</groupId>
 		    <artifactId>java-client</artifactId>
-		    <version>4.1.2</version>
+		    <version>${appium.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
 		    <artifactId>poi</artifactId>
-		    <version>3.17</version>
+		    <version>${apache.poi.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
 		    <groupId>org.apache.poi</groupId>
 		    <artifactId>poi-ooxml</artifactId>
-		    <version>3.17</version>
+		    <version>${apache.poi.version}</version>
 		</dependency>
 								
 		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 		<dependency>
 		    <groupId>org.modelmapper</groupId>
 		    <artifactId>modelmapper</artifactId>
-		    <version>1.1.0</version>
+		    <version>${modelmapper.version} </version>
 		</dependency>
 				
 	</dependencies>
