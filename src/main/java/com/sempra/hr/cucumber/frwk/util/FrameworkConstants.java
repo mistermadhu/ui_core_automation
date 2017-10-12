@@ -1,7 +1,5 @@
 package com.sempra.hr.cucumber.frwk.util;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 /**
  *  
@@ -21,7 +19,8 @@ public class FrameworkConstants {
 	public static final String ALM_URL_PROP="alm.url";
 	public static final String TESTDATA_XLS_LOCATION_PROP="testdata.xls.location";
 	public static final String WEBDRIVER_FOLDER_LOCATION_PROP="driver.location";
-	
+	public static final String IS_ALM_UPDATE_PROP="isALMUpdate";
+	public static final boolean IS_ALM_UPDATE=new Boolean(System.getProperty(IS_ALM_UPDATE_PROP)).booleanValue();
 	
 	//Fetch from properties file and assign it to constants
 	public static PropertyUtils myPropertyUtils = PropertyUtils

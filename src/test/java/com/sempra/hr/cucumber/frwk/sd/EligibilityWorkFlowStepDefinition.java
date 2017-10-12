@@ -41,7 +41,6 @@ public class EligibilityWorkFlowStepDefinition {
 	
 	@Given("^I am on Home Page as Admin$")
 	public void i_am_on_Home_Page_as_Admin(DataTable dtObj) throws Exception {
-        
 		// Load the update the DataTable
 		PreConditionDataTable cdTable=(PreConditionDataTable)wtObj.loadDataTable(PreConditionDataTable.class,dtObj);
 		logger.info("Updated data table ="+cdTable);
@@ -209,8 +208,8 @@ public class EligibilityWorkFlowStepDefinition {
 		wtObj.logExtentScreenCapture(LogStatus.PASS, "Verify if the Eligibility Summary Opens in a new web page ",
 				"Expected: Eligibility Summary of the Employee should be opened in a new web page | Actual: Eligibility Summary of the Employee Opens in a new web page successfully");
 		driver.switchTo().window(winHandleBefore);
-		
-		TestTrackALMClient.INSTANCE.createAndUpdateTestRun(trdObj);
+		if(FrameworkConstants.IS_ALM_UPDATE)
+		  TestTrackALMClient.INSTANCE.createAndUpdateTestRun(trdObj);
 	}
 
 	@After
