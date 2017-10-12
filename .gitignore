@@ -11,6 +11,7 @@ buildNumber.properties
 .project
 .settings/
 Report.html
+Report_old.html
 screenshots/
 src/test/resources/drivers/bak/
 src/test/results/
@@ -19,3 +20,5 @@ ui_framework.iml
 test-output/
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+
+

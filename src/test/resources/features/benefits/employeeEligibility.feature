@@ -5,6 +5,7 @@ Scenario Outline: Correct plans and rates shown for an employee based on Benefit
 Given I am on Home Page as Admin
 |Credentials::UserType | Eligibility             |
 |FeatureID             | RM_01                   |
+#|WorksheetID               | RM_FTR_001_Utilities |
 |TestScriptID          | <Test_Script_Id>        |
 |PermutationNumber     | <Permutation_Number>    | 
 When I click on People from the Menu bar
@@ -25,18 +26,4 @@ When I click on Eligibility Summary link in My Links dropdown
 Then I should be able to see Eligibility Summary of the employee on a new web page
 Examples: 
 |Test_Script_Id| Permutation_Number |
-|1234          |1                   |
-
-
-#Given I am on Home Page as Admin
-#|Credentials::UserType | Eligibility    |
-#|FeatureID             | RM_01          |
-#|TestCaseID            | <TC_ID>        |
-#|PermutationNo           | <PermutationNo>  |
-#When I click on People from the Menu bar
-#And I click on Benefits from the list
-#And I click on Life Events
-#Then I enter Employee ID field
-#Examples: 
-#|TC_ID| PermutationNo |
-#|1234 |1            |
+|22302         |1                   |

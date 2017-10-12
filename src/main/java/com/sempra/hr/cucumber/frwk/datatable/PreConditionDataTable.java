@@ -8,7 +8,7 @@ import com.sempra.hr.cucumber.frwk.annotations.Data;
  * @author maritakula@prokarma.com
  * @version 1.0
  */
-public class EligibilityPreConditionDataTable implements Serializable {
+public class PreConditionDataTable implements Serializable {
 	
 private static final long serialVersionUID = 1L;
 

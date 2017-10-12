@@ -16,10 +16,11 @@ public class FrameworkConstants {
 
 	// Files names
 	public static final String TEST_CONFIG_PROPERTIES_FILENAME="testconfig.properties";
-	public static final String BROWSER_TYPE_PROP="browserType";
-	public static final String SITE_URL_PROP="siteUrl";
-	public static final String TESTDATA_XLS_LOCATION_PROP="testdata_xls_location";
-	public static final String WEBDRIVER_FOLDER_LOCATION_PROP="driver_location";
+	public static final String BROWSER_TYPE_PROP="browser.type";
+	public static final String SITE_URL_PROP="site.url";
+	public static final String ALM_URL_PROP="alm.url";
+	public static final String TESTDATA_XLS_LOCATION_PROP="testdata.xls.location";
+	public static final String WEBDRIVER_FOLDER_LOCATION_PROP="driver.location";
 	
 	
 	//Fetch from properties file and assign it to constants
@@ -40,6 +41,8 @@ public class FrameworkConstants {
 	public static final String SITE_URL = myPropertyUtils
 			.getProperty(SITE_URL_PROP);
 	
+	public static final String ALM_URL = myPropertyUtils
+			.getProperty(ALM_URL_PROP);
 	
 	public static final int UNAUTHORIZED = 401;
 	public static final int GET_SUCCESS = 200;

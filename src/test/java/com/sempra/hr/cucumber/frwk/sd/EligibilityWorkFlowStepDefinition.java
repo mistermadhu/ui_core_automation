@@ -4,11 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
-import com.sempra.hr.cucumber.frwk.datatable.EligibilityPreConditionDataTable;
 import com.sempra.hr.cucumber.frwk.datatable.EligibilityTestData;
+import com.sempra.hr.cucumber.frwk.datatable.PreConditionDataTable;
 import com.sempra.hr.cucumber.frwk.main.WebTestHelper;
 import com.sempra.hr.cucumber.frwk.pageobjects.HomePage;
 import com.sempra.hr.cucumber.frwk.pageobjects.LoginPage;
+import com.sempra.hr.cucumber.frwk.testtrack.main.TestCaseInfo;
+import com.sempra.hr.cucumber.frwk.testtrack.main.TestTrackALMClient;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
 import cucumber.api.DataTable;
@@ -29,9 +31,11 @@ public class EligibilityWorkFlowStepDefinition {
 	private WebTestHelper wtObj;
 	private HomePage homePageObj;
 	private EligibilityTestData etdObj;
+	private TestCaseInfo trdObj;
 	private static final Logger logger = LoggerFactory.getLogger(EligibilityWorkFlowStepDefinition.class);
 	public EligibilityWorkFlowStepDefinition() throws Exception {  //Cucumber runtime create a default instance of this class
 		wtObj=new WebTestHelper("EligibilityWorkFlow");                  //cucumber.runtime.CucumberException: class com.sempra.hr.cucumber.frwk.main.WebTest doesn't have an empty constructor. If you need DI, put cucumber-picocontainer on the classpath
+		trdObj=new TestCaseInfo();
 	}
 	
 	
@@ -39,7 +43,7 @@ public class EligibilityWorkFlowStepDefinition {
 	public void i_am_on_Home_Page_as_Admin(DataTable dtObj) throws Exception {
         
 		// Load the update the DataTable
-		EligibilityPreConditionDataTable cdTable=(EligibilityPreConditionDataTable)wtObj.loadDataTable(EligibilityPreConditionDataTable.class,dtObj);
+		PreConditionDataTable cdTable=(PreConditionDataTable)wtObj.loadDataTable(PreConditionDataTable.class,dtObj);
 		logger.info("Updated data table ="+cdTable);
 		
 		// Load the test data for this Workflow
@@ -205,6 +209,8 @@ public class EligibilityWorkFlowStepDefinition {
 		wtObj.logExtentScreenCapture(LogStatus.PASS, "Verify if the Eligibility Summary Opens in a new web page ",
 				"Expected: Eligibility Summary of the Employee should be opened in a new web page | Actual: Eligibility Summary of the Employee Opens in a new web page successfully");
 		driver.switchTo().window(winHandleBefore);
+		
+		TestTrackALMClient.INSTANCE.createAndUpdateTestRun(trdObj);
 	}
 
 	@After

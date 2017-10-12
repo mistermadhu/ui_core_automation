@@ -9,15 +9,20 @@
 		<extent.version>2.41.2</extent.version>
         <sl4j.version>1.7.25</sl4j.version>
         <mockito.version>1.10.19</mockito.version>
-         <commons.io.version>2.5</commons.io.version>
-         <jayway.json.version>2.4.0</jayway.json.version>
-		 <appium.version>4.1.2</appium.version>
-		 <apache.poi.version>3.17</apache.poi.version>
-		 <modelmapper.version>1.1.0</modelmapper.version>
-		 <commons.io.version>2.5</commons.io.version>
-		 <commons.lang.version>2.6</commons.lang.version>
+        <commons.io.version>2.5</commons.io.version>
+        <jayway.json.version>2.4.0</jayway.json.version>
+		<appium.version>4.1.2</appium.version>
+		<apache.poi.version>3.17</apache.poi.version>
+		<modelmapper.version>1.1.0</modelmapper.version>
+		<commons.io.version>2.5</commons.io.version>
+		<commons.lang.version>2.6</commons.lang.version>
+		<wsdl4j.version>1.6.2</wsdl4j.version>
+		<commons.discovery.version>0.5</commons.discovery.version>
         <selenium.java.version>3.6.0</selenium.java.version>
         <cucumber.cukes.version>1.2.5</cucumber.cukes.version>
+        <apache.axis.version>1.4</apache.axis.version>
+        <maven.surefire.version>2.20.1</maven.surefire.version>
+        <javax.xml.rpc.version>1.1.1</javax.xml.rpc.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -60,11 +65,6 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>${commons.io.version} </version>
 		</dependency>
-		<!-- <dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.5</version>
-		</dependency> -->
 		<dependency>
 		    <groupId>commons-lang</groupId>
 		    <artifactId>commons-lang</artifactId>
@@ -92,13 +92,55 @@
 		    <artifactId>poi-ooxml</artifactId>
 		    <version>${apache.poi.version}</version>
 		</dependency>
-								
-		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
 		<dependency>
 		    <groupId>org.modelmapper</groupId>
 		    <artifactId>modelmapper</artifactId>
 		    <version>${modelmapper.version} </version>
 		</dependency>
-				
-	</dependencies>
+		<dependency>
+		    <groupId>org.apache.axis</groupId>
+		    <artifactId>axis</artifactId>
+		    <version>${apache.axis.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.xml.rpc</groupId>
+		    <artifactId>javax.xml.rpc-api</artifactId>
+		    <version>${javax.xml.rpc.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>wsdl4j</groupId>
+		    <artifactId>wsdl4j</artifactId>
+		    <version>${wsdl4j.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-discovery</groupId>
+		    <artifactId>commons-discovery</artifactId>
+		    <version>${commons.discovery.version}</version>
+		</dependency>
+ </dependencies>
+ 	<build>
+	 <pluginManagement>
+		<plugins>
+		  <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>${maven.surefire.version}</version>
+				<configuration>
+					<suiteXmlFiles>
+					<!-- TestNG suite XML files -->
+						<suiteXmlFile>src/test/resources/sempraSampleTest.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+		  </plugin>
+		  <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	 </pluginManagement>
+	 </build>
 </project>
