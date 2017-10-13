@@ -32,6 +32,7 @@ public class EligibilityWorkFlowStepDefinition {
 	private HomePage homePageObj;
 	private EligibilityTestData etdObj;
 	private TestCaseInfo trdObj;
+	private PreConditionDataTable cdTable;
 	private static final Logger logger = LoggerFactory.getLogger(EligibilityWorkFlowStepDefinition.class);
 	public EligibilityWorkFlowStepDefinition() throws Exception {  //Cucumber runtime create a default instance of this class
 		wtObj=new WebTestHelper("EligibilityWorkFlow");                  //cucumber.runtime.CucumberException: class com.sempra.hr.cucumber.frwk.main.WebTest doesn't have an empty constructor. If you need DI, put cucumber-picocontainer on the classpath
@@ -41,8 +42,8 @@ public class EligibilityWorkFlowStepDefinition {
 	
 	@Given("^I am on Home Page as Admin$")
 	public void i_am_on_Home_Page_as_Admin(DataTable dtObj) throws Exception {
-		// Load the update the DataTable
-		PreConditionDataTable cdTable=(PreConditionDataTable)wtObj.loadDataTable(PreConditionDataTable.class,dtObj);
+	 	// Load the update the DataTable
+		cdTable=(PreConditionDataTable)wtObj.loadDataTable(PreConditionDataTable.class,dtObj);
 		logger.info("Updated data table ="+cdTable);
 		
 		// Load the test data for this Workflow
@@ -54,7 +55,6 @@ public class EligibilityWorkFlowStepDefinition {
 		homePageObj=new LoginPage(wtObj.getDriver()).Login(cdTable.getUserName(),cdTable.getPassWord());
         logger.info("Waiting for some time ...");
 		wtObj.waitForDOMtoBeLoaded();
-		//Thread.sleep(2000); // Wait for 2 seconds, If removed TimeoutException in Firefox browser
 		wtObj.logExtentScreenCapture(LogStatus.PASS, "Launch Vantage Home Page as Admin","Expected: User should be able to navigate to Home Page | Actual: Vantage Home Page launched successfully");
  
 
@@ -208,12 +208,21 @@ public class EligibilityWorkFlowStepDefinition {
 		wtObj.logExtentScreenCapture(LogStatus.PASS, "Verify if the Eligibility Summary Opens in a new web page ",
 				"Expected: Eligibility Summary of the Employee should be opened in a new web page | Actual: Eligibility Summary of the Employee Opens in a new web page successfully");
 		driver.switchTo().window(winHandleBefore);
-		if(FrameworkConstants.IS_ALM_UPDATE)
-		  TestTrackALMClient.INSTANCE.createAndUpdateTestRun(trdObj);
-	}
+		
+		
+		// Set Test Case Status
+		  trdObj.setTestCaseRecordID(Long.parseLong(cdTable.getTestcaseID()));
+		  trdObj.setTestStatus(FrameworkConstants.PASS);
+		}
 
 	@After
 	public void tearDown(Scenario scenario) {
+		
+		// Update ALM
+		if(FrameworkConstants.IS_ALM_UPDATE)
+		{
+		  TestTrackALMClient.INSTANCE.createAndUpdateTestRun(trdObj);
+		}
 		wtObj.tearDown(scenario);
     }
 }

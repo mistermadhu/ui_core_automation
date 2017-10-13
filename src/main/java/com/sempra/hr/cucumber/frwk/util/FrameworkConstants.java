@@ -21,6 +21,10 @@ public class FrameworkConstants {
 	public static final String WEBDRIVER_FOLDER_LOCATION_PROP="driver.location";
 	public static final String IS_ALM_UPDATE_PROP="isALMUpdate";
 	public static final boolean IS_ALM_UPDATE=new Boolean(System.getProperty(IS_ALM_UPDATE_PROP)).booleanValue();
+	// Execution status
+	public static final String PASS="Pass";
+	public static final String FAIL="Fail";
+	
 	
 	//Fetch from properties file and assign it to constants
 	public static PropertyUtils myPropertyUtils = PropertyUtils

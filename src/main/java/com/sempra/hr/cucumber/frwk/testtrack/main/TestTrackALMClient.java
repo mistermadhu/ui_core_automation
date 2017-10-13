@@ -1,9 +1,12 @@
 package com.sempra.hr.cucumber.frwk.testtrack.main;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sempra.hr.cucumber.frwk.sd.EligibilityWorkFlowStepDefinition;
 import com.sempra.hr.cucumber.frwk.testtrack.util.CEvent;
 import com.sempra.hr.cucumber.frwk.testtrack.util.CItemToTrack;
 import com.sempra.hr.cucumber.frwk.testtrack.util.CProject;
@@ -17,6 +20,7 @@ import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 public enum TestTrackALMClient {
 INSTANCE;
 private TtsoapcgiStub objTT;
+private final Logger logger = LoggerFactory.getLogger(TestTrackALMClient.class);
 private TestTrackALMClient()
 	{
 	 try
@@ -27,7 +31,7 @@ private TestTrackALMClient()
 	   }
 	 catch(Exception exp)
 	 {
-	   System.out.println("Exception while creating the SOAP UI Stub ::"+exp);	 
+	   logger.error("Exception while creating the SOAP UI Stub ::"+exp);	 
 	 }
     } 
 
@@ -81,8 +85,8 @@ public long createAndUpdateTestRun(TestCaseInfo tcdObj)
             	testRunID = objTrackItem.getRecordid();
              }
         } 
-        System.out.println("Test Record ID="+recordID);
-        System.out.println("Test Run ID="+testRunID);
+        logger.info("Test Record ID="+recordID);
+        logger.info("Test Run ID="+testRunID);
         /***************************************************************************************
          Set Pass or Fail status and upload attachment
         ***************************************************************************************/
@@ -117,14 +121,14 @@ public long createAndUpdateTestRun(TestCaseInfo tcdObj)
         objTT.saveTestRun(lngCookie, objTTTestRun);
         
      }
-        System.out.println("Helix ALM Upload Successful");
+        logger.info("Helix ALM Upload Successful");
         //Return Test case ID
         return testRunID;
  }
 catch (Exception exp)
   {
 	exp.printStackTrace();
-    System.out.println("Exception while connecting to Helix ALM ::"+exp.getMessage());	
+    logger.error("Exception while connecting to Helix ALM ::"+exp.getMessage());	
     return -1L;
   }
     
