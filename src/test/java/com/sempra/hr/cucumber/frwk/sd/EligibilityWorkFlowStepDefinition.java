@@ -63,23 +63,23 @@ public class EligibilityWorkFlowStepDefinition {
 	@When("^I click on People from the Menu bar$")
 	public void i_click_on_People_from_the_Menu_bar() throws Exception {
 		homePageObj.click_PeopleMenu();
-		//wtObj.logExtentScreenCapture(LogStatus.PASS, "Click on People from the Menu Bar","Expected: People Menu should be displayed | Actual: People Menu is displayed successfully");
+		wtObj.logExtentScreenCapture(LogStatus.PASS, "Click on People from the Menu Bar","Expected: People Menu should be displayed | Actual: People Menu is displayed successfully");
 
 	}
 
 	@And("^I click on Benefits from the list$")
 	public void i_click_on_Benefits_from_the_list() throws Exception {
 		homePageObj.click_Benefits();
-		//wtObj.logExtentScreenCapture(LogStatus.PASS, "Click on Benefits from the list","Expected: Benefits Sub Menu should be displayed | Actual: Benefits Sub Menu is displayed successfully");
+		wtObj.logExtentScreenCapture(LogStatus.PASS, "Click on Benefits from the list","Expected: Benefits Sub Menu should be displayed | Actual: Benefits Sub Menu is displayed successfully");
 	}
 
 	@And("^I click on Life Events$")
 	public void i_click_on_Life_Events() throws Exception {
 
 		homePageObj.click_LifeEventsMenuItem();
-		/*wtObj.logExtentScreenCapture(LogStatus.PASS, "Click on Life Events from the list",
+		wtObj.logExtentScreenCapture(LogStatus.PASS, "Click on Life Events from the list",
 				"Expected: Life Events should be clicked and Employee ID search page should be displayed | Actual: Employee ID search Page is displayed successfully");
-*/	}
+	}
 
 	
 	@And("^I enter Employee ID field$") 
@@ -106,11 +106,11 @@ public class EligibilityWorkFlowStepDefinition {
 				"Expected: A popup should be displayed to enter date and Enrolling details | Actual: Popup displayed successfully");
 	}
 
-	@And("^I select Enroll on behalf of the employee$")
+/*	@And("^I select Enroll on behalf of the employee$")
 	public void i_select_Enroll_on_behalf_of_the_employee() throws Exception {
      // empty implementation
 	}
-
+*/
 	@And("^I enter Emulation Date as current date on the Date field$")
 	public void i_enter_Emulation_Date_as_current_date_on_the_Date_field() throws Exception {
 

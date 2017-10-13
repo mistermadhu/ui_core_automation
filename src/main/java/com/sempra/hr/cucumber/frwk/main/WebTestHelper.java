@@ -124,17 +124,16 @@ private void openBrowser() throws Exception {
 	if (FrameworkConstants.BROWSER_TYPE.equalsIgnoreCase("Firefox")) {
 		System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
 		System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
-		 System.setProperty("webdriver.gecko.driver",
+		System.setProperty("webdriver.gecko.driver",
 				 System.getProperty("user.dir") +"/"+FrameworkConstants.WEBDRIVER_FOLDER_LOCATION+"/geckodriver.exe");
 		driver = new FirefoxDriver(); 
 	} else if (FrameworkConstants.BROWSER_TYPE.equalsIgnoreCase("Chrome")) {
 		
-		    ChromeOptions cOptions = new ChromeOptions();
-		    cOptions.addArguments("disable-infobars");
-		    cOptions.addArguments("--js-flags=--expose-gc");  
-		    cOptions.addArguments("--enable-precise-memory-info"); 
-		    cOptions.addArguments("--disable-popup-blocking");
-		    cOptions.addArguments("--disable-default-apps"); 
+		 ChromeOptions cOptions = new ChromeOptions();
+		 cOptions.addArguments("--disable-infobars");
+		 cOptions.addArguments("--enable-precise-memory-info"); 
+		 cOptions.addArguments("--disable-popup-blocking");
+		 cOptions.addArguments("--disable-default-apps"); 
 		System.setProperty("webdriver.chrome.driver",
 				System.getProperty("user.dir") +"/"+ FrameworkConstants.WEBDRIVER_FOLDER_LOCATION+"/chromedriver.exe");
 		driver = new ChromeDriver(cOptions);

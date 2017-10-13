@@ -14,7 +14,7 @@ And I click on Life Events
 And I enter Employee ID field
 And I click on Search button
 And I click on employee's last name hyperlink
-And I select Enroll on behalf of the employee
+#And I select Enroll on behalf of the employee
 And I enter Emulation Date as current date on the Date field
 And I click on Report a Life Event
 And I select Admin Correction from the drop-down
