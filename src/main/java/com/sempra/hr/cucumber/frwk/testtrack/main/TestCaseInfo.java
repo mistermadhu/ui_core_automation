@@ -6,13 +6,13 @@ public class TestCaseInfo {
 	private double hours = 0.0;
 	private long parentEventId = 0L;
 	private double totalTimeSpent = 0.0;
-	private long testCaseRecordID = 22302L;
+	private long testCaseRecordID = 22746L;
 	private String testStatus = "Fail";
 	private String strTTUser = "SempraHQ";// "Administrator";
 	private String strTTPassword = "Vantage2018!";
-	private String testRunSet = "Beta 4 Tests";// "Alpha 1 Tests";
+	private String testRunSet = "UAT Cycle 1";//"Beta 4 Tests";// "Alpha 1 Tests";
 	private String strTTUserFull = "Automation Team, ProKarma";
-	private String projectName = "Sandbox - My Info, the next gen";
+	private String projectName ="Sandbox My Info";// "NEW My Info,the next generations";//"Sandbox - My Info, the next gen";
 
 	public double getHours() {
 		return hours;
