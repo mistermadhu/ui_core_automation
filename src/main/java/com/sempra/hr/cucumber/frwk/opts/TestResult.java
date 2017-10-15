@@ -1,11 +1,12 @@
 package com.sempra.hr.cucumber.frwk.opts;
+
 /**
- *  
+ * 
  * @author maritakula@prokarma.com
  * @version 1.0
  */
 public class TestResult {
-	
+
 	private long id;
 	private ResultType result;
 	private String webDriver;
@@ -16,11 +17,11 @@ public class TestResult {
 	private long duration;
 	private long startTime;
 	private long endTime;
-    private String description;
-    private Long executionId;
-    
-	public TestResult(){
-		
+	private String description;
+	private Long executionId;
+
+	public TestResult() {
+
 	}
 
 	public long getId() {
@@ -62,7 +63,7 @@ public class TestResult {
 	public void setTestId(String testId) {
 		this.testId = testId;
 	}
-	
+
 	public String getAlmResult() {
 		return almResult;
 	}
@@ -86,8 +87,6 @@ public class TestResult {
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}
-	
-	
 
 	public long getStartTime() {
 		return startTime;
@@ -113,18 +112,17 @@ public class TestResult {
 		this.description = description;
 	}
 
-    public Long getExecutionId() {
-        return executionId;
-    }
-
-    public void setExecutionId(Long executionId) {
-        this.executionId = executionId;
-    }
-    
-	@Override
-	public String toString(){
-		return "testId["+testId+"] method["+method+"] result["+result+"] duration["+duration+"]";
+	public Long getExecutionId() {
+		return executionId;
 	}
-	
-	
+
+	public void setExecutionId(Long executionId) {
+		this.executionId = executionId;
+	}
+
+	@Override
+	public String toString() {
+		return "testId[" + testId + "] method[" + method + "] result[" + result + "] duration[" + duration + "]";
+	}
+
 }

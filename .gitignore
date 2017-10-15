@@ -12,6 +12,7 @@ buildNumber.properties
 .settings/
 Report.html
 Report_*.html
+debug.log
 screenshots/
 src/test/resources/drivers/bak/
 src/test/results/

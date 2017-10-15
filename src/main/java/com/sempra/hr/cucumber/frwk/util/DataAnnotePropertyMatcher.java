@@ -29,8 +29,8 @@ public class DataAnnotePropertyMatcher implements MatchingStrategy {
 		String sourceName = propertyInfo.getSourceProperties().get(0).getName().replaceAll(" ", "");
 
 		/**
-		 * logger.info("Source Name: " + sourceName); for (PropertyInfo
-		 * property : propertyInfo.getDestinationProperties()) {
+		 * logger.info("Source Name: " + sourceName); for (PropertyInfo property
+		 * : propertyInfo.getDestinationProperties()) {
 		 * logger.info(property.getAnnotation(Data.class)); }
 		 */
 
