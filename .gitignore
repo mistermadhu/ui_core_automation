@@ -10,7 +10,8 @@ buildNumber.properties
 .classpath
 .project
 .settings/
-Report.html
+Report*.html
+debug.log
 screenshots/
 src/test/resources/drivers/bak/
 src/test/results
