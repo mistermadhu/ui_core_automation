@@ -10,11 +10,16 @@ buildNumber.properties
 .classpath
 .project
 .settings/
-Report*.html
+Report.html
+Report_*.html
 debug.log
 screenshots/
 src/test/resources/drivers/bak/
-src/test/results
+src/test/results/
+.idea/
+ui_framework.iml
 test-output/
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
+
+

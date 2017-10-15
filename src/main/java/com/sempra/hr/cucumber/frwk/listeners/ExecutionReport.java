@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.UUID;
 
 import com.sempra.hr.cucumber.frwk.opts.TestResult;
+
 /**
- *  
+ * 
  * @author maritakula@prokarma.com
  * @version 1.0
  */
@@ -18,15 +19,15 @@ public class ExecutionReport {
 	private static String buildNum;
 	private static String environment;
 	private static final String execId = UUID.randomUUID().toString();;
-	
+
 	private static String jwt;
 	private static String domain;
 	private static String project;
 	private static String testSetId;
 	private static boolean useAlmProxy;
-	
+
 	private static String tepLocation;
-	
+
 	private static List<TestResult> resultList = new LinkedList<TestResult>();
 
 	private ExecutionReport() {
@@ -71,11 +72,10 @@ public class ExecutionReport {
 	public static Long getEndTime() {
 		return endTime;
 	}
-	
-	public static void addResult(TestResult result){
+
+	public static void addResult(TestResult result) {
 		resultList.add(result);
 	}
-
 
 	public static String getExecId() {
 		return execId;
@@ -128,8 +128,5 @@ public class ExecutionReport {
 	public static void setTepLocation(String tepLocation) {
 		ExecutionReport.tepLocation = tepLocation;
 	}
-	
-	
-	
 
 }

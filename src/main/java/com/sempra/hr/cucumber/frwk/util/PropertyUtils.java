@@ -8,22 +8,22 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 /**
- *  
+ * 
  * @author maritakula@prokarma.com
  * @version 1.0
  */
 public class PropertyUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(PropertyUtils.class);
-	
+
 	private final Properties myConfigProperties = new Properties();
 
 	private PropertyUtils(final String aPropFile) {
 
 		// String workingDir = System.getProperty("user.dir");
-		InputStream systemResource = ClassLoader
-				.getSystemResourceAsStream(aPropFile);
+		InputStream systemResource = ClassLoader.getSystemResourceAsStream(aPropFile);
 		// String file = systemResource.getFile();
 		// InputStream in;
 		try {

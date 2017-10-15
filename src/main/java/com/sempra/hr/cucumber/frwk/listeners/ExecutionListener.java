@@ -7,55 +7,54 @@ import org.testng.IExecutionListener;
 import com.sempra.hr.cucumber.frwk.opts.TestResult;
 
 /**
- *  
+ * 
  * @author maritakula@prokarma.com
  * @version 1.0
  */
 public class ExecutionListener implements IExecutionListener {
 
 	private static final Logger logger = LoggerFactory.getLogger(ExecutionListener.class);
-	
-	//@Override
+
+	// @Override
 	public void onExecutionStart() {
 		ExecutionReport.setStartTime(System.currentTimeMillis());
-		
+
 		String buildNum;
 		String testEnv;
-		
-		if(System.getProperty("buildNum") != null){
+
+		if (System.getProperty("buildNum") != null) {
 			buildNum = System.getProperty("buildNum");
 			ExecutionReport.setBuildNum(buildNum);
-		}else{
+		} else {
 			buildNum = "";
 		}
-		
-		if(System.getProperty("testEnv") != null){
+
+		if (System.getProperty("testEnv") != null) {
 			testEnv = System.getProperty("testEnv");
 			ExecutionReport.setEnvironment(testEnv);
-		}else{
+		} else {
 			testEnv = "";
 		}
-				
-		logger.info("Execution Start: Exec Id[{}] Build Number[{}] Test Env[{}]", ExecutionReport.getExecId(), buildNum, testEnv );
-		
+
+		logger.info("Execution Start: Exec Id[{}] Build Number[{}] Test Env[{}]", ExecutionReport.getExecId(), buildNum,
+				testEnv);
+
 	}
-	
-	//@Override
+
+	// @Override
 	public void onExecutionFinish() {
 		ExecutionReport.setEndTime(System.currentTimeMillis());
 		publishExecReport();
 	}
-	
-	private void publishExecReport(){
+
+	private void publishExecReport() {
 		logger.info("Execution Report: Exec Id[{}] Build Number[{}] Test Env[{}] Start Time[{}] End Time[{}]",
 				ExecutionReport.getExecId(), ExecutionReport.getBuildNum(), ExecutionReport.getEnvironment(),
-				ExecutionReport.getStartTime(), ExecutionReport.getEndTime() );
-		
-		for(TestResult tResult : ExecutionReport.getResultList()){
+				ExecutionReport.getStartTime(), ExecutionReport.getEndTime());
+
+		for (TestResult tResult : ExecutionReport.getResultList()) {
 			logger.info("Test: {}", tResult);
 		}
 	}
-	
-
 
 }

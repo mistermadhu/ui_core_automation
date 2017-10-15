@@ -10,6 +10,11 @@ import com.sempra.hr.cucumber.frwk.annotations.Data;
  */
 public class TestDataInfo  implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Data(name = "BusinessUnit")
 	private String businessUnit;
 

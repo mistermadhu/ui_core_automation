@@ -48,7 +48,7 @@ public class ReportNGEmailableReport implements IReporter {
 	protected List<SuiteResult> suiteResults = Lists.newArrayList();
 	private StringBuilder buffer = new StringBuilder();
 
-	//@Override
+	// @Override
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
 		try {
 			writer = createWriter(outputDirectory);
@@ -369,7 +369,7 @@ public class ReportNGEmailableReport implements IReporter {
 	}
 
 	private String extractMethodNameFromResult(ITestResult mResult) {
-		String methodName = (String)mResult.getAttribute("cukes.scenarioName");
+		String methodName = (String) mResult.getAttribute("cukes.scenarioName");
 		if (StringUtils.isEmpty(methodName)) {
 			methodName = mResult.getMethod().getMethodName();
 		} else {
@@ -455,53 +455,38 @@ public class ReportNGEmailableReport implements IReporter {
 			writer.print("</td></tr>");
 		}
 
-/*		if ("true".equals(BaseTest.getTestConfig().getConfig("printSauceLink"))) {
-			if (result.getAttribute("webdriver.sessionID") != null) {
-				String sessionID = result.getAttribute("webdriver.sessionID").toString();
-				String sauceLink = "http://saucelabs.com/jobs/" + sessionID;
-
-				writer.print("<tr><th");
-				if (parameterCount > 1) {
-					writer.print(" colspan=\"");
-					writer.print(parameterCount);
-					writer.print("\"");
-				}
-				writer.print(">");
-				writer.print("Link to Test Result in Sauce Lab");
-				writer.print("</th></tr>");
-
-				writer.print("<tr><td");
-				if (parameterCount > 1) {
-					writer.print(" colspan=\"");
-					writer.print(parameterCount);
-					writer.print("\"");
-				}
-				writer.print(">");
-				writer.print("<a href=" + sauceLink + ">Click here to go to the test result in Sauce Lab</a>");
-				writer.print("</td></tr>");
-			}
-			
-			writer.print("<tr><th");
-			if (parameterCount > 1) {
-				writer.print(" colspan=\"");
-				writer.print(parameterCount);
-				writer.print("\"");
-			}
-			writer.print(">");
-			writer.print("Additonal data info");
-			writer.print("</th></tr>");
-
-			writer.print("<tr><td");
-			if (parameterCount > 1) {
-				writer.print(" colspan=\"");
-				writer.print(parameterCount);
-				writer.print("\"");
-			}
-			writer.print(">");
-			writer.print(((Map<String, String>)result.getAttribute("ReportNGMessages")).toString().replaceAll("\\}", "\\}<br/>"));
-			writer.print("</td></tr>");
-			
-		}*/
+		/*
+		 * if
+		 * ("true".equals(BaseTest.getTestConfig().getConfig("printSauceLink")))
+		 * { if (result.getAttribute("webdriver.sessionID") != null) { String
+		 * sessionID = result.getAttribute("webdriver.sessionID").toString();
+		 * String sauceLink = "http://saucelabs.com/jobs/" + sessionID;
+		 * 
+		 * writer.print("<tr><th"); if (parameterCount > 1) {
+		 * writer.print(" colspan=\""); writer.print(parameterCount);
+		 * writer.print("\""); } writer.print(">");
+		 * writer.print("Link to Test Result in Sauce Lab");
+		 * writer.print("</th></tr>");
+		 * 
+		 * writer.print("<tr><td"); if (parameterCount > 1) {
+		 * writer.print(" colspan=\""); writer.print(parameterCount);
+		 * writer.print("\""); } writer.print(">"); writer.print("<a href=" +
+		 * sauceLink + ">Click here to go to the test result in Sauce Lab</a>");
+		 * writer.print("</td></tr>"); }
+		 * 
+		 * writer.print("<tr><th"); if (parameterCount > 1) {
+		 * writer.print(" colspan=\""); writer.print(parameterCount);
+		 * writer.print("\""); } writer.print(">");
+		 * writer.print("Additonal data info"); writer.print("</th></tr>");
+		 * 
+		 * writer.print("<tr><td"); if (parameterCount > 1) {
+		 * writer.print(" colspan=\""); writer.print(parameterCount);
+		 * writer.print("\""); } writer.print(">"); writer.print(((Map<String,
+		 * String>)result.getAttribute("ReportNGMessages")).toString().
+		 * replaceAll("\\}", "\\}<br/>")); writer.print("</td></tr>");
+		 * 
+		 * }
+		 */
 		writer.print("</table>");
 		writer.print("<p class=\"totop\"><a href=\"#summary\">back to summary</a></p>");
 	}
@@ -623,7 +608,7 @@ public class ReportNGEmailableReport implements IReporter {
 		 * lexicographic order).
 		 */
 		protected static final Comparator<ITestResult> RESULT_COMPARATOR = new Comparator<ITestResult>() {
-			//@Override
+			// @Override
 			public int compare(ITestResult o1, ITestResult o2) {
 				int result = o1.getTestClass().getName().compareTo(o2.getTestClass().getName());
 				if (result == 0) {
@@ -689,7 +674,7 @@ public class ReportNGEmailableReport implements IReporter {
 				resultsPerMethod.add(result);
 
 				String previousClassName = result.getTestClass().getName();
-				String featureName = (String)result.getAttribute("cukes.featureName");
+				String featureName = (String) result.getAttribute("cukes.featureName");
 				if (!org.apache.commons.lang3.StringUtils.isEmpty(featureName)) {
 					previousClassName = featureName;
 				}
@@ -703,7 +688,7 @@ public class ReportNGEmailableReport implements IReporter {
 					result = resultsIterator.next();
 
 					String className = result.getTestClass().getName();
-					featureName = (String)result.getAttribute("cukes.featureName");
+					featureName = (String) result.getAttribute("cukes.featureName");
 					if (!org.apache.commons.lang.StringUtils.isEmpty(featureName)) {
 						className = featureName;
 					}

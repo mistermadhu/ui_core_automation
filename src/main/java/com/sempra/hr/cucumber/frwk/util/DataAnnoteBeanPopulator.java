@@ -1,7 +1,5 @@
 package com.sempra.hr.cucumber.frwk.util;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,19 +37,24 @@ public class DataAnnoteBeanPopulator {
 		return mapper.map(inputData, beanCls);
 	}
 
-	 public static void main(String[] args) {
-		/*Map<String, List<String>> testData = new HashMap<String, List<String>>();
-		testData.put("BUSINESSuNIT", Arrays.asList("AMEX","GCOTS"));
-		testData.put("ITEM", Arrays.asList("000750-000-17"));
-		testData.put("INSPECTIONQUANTITY", Arrays.asList("10.0"));
+	public static void main(String[] args) {
+		/*
+		 * Map<String, List<String>> testData = new HashMap<String,
+		 * List<String>>(); testData.put("BUSINESSuNIT",
+		 * Arrays.asList("AMEX","GCOTS")); testData.put("ITEM",
+		 * Arrays.asList("000750-000-17")); testData.put("INSPECTIONQUANTITY",
+		 * Arrays.asList("10.0"));
+		 * 
+		 * DataAnnoteBeanPopulator populator = new
+		 * DataAnnoteBeanPopulator(testData); TestDataInfo dataInfo =
+		 * populator.populate(TestDataInfo.class);
+		 * 
+		 * logger.info("Business Unit: " + dataInfo.getBusinessUnit());
+		 * logger.info("Item: " + dataInfo.getItem());
+		 * logger.info("Inspection Quantity: " +
+		 * dataInfo.getInspectionQuantity());
+		 */
 
-		DataAnnoteBeanPopulator populator = new DataAnnoteBeanPopulator(testData);
-		TestDataInfo dataInfo = populator.populate(TestDataInfo.class);
-
-		logger.info("Business Unit: " + dataInfo.getBusinessUnit());
-		logger.info("Item: " + dataInfo.getItem());
-		logger.info("Inspection Quantity: " + dataInfo.getInspectionQuantity());*/
-
-	}  
+	}
 
 }
