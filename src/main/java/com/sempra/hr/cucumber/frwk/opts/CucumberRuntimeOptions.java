@@ -50,6 +50,7 @@ public class CucumberRuntimeOptions {
 
 		ro.getFeaturePaths().clear();
 		ro.getFeaturePaths().add(this.feature);
+	
 
 		if (!this.tags.isEmpty()) {
 			for (String s : this.tags.split("--tags")) {

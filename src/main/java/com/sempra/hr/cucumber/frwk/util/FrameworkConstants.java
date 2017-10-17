@@ -21,7 +21,9 @@ public class FrameworkConstants {
 	public static final String TESTDATA_XLS_LOCATION_PROP = "testdata.xls.location";
 	public static final String WEBDRIVER_FOLDER_LOCATION_PROP = "driver.location";
 	public static final String IS_ALM_UPDATE_PROP = "isALMUpdate";
+	public static final String DRY_RUN_PROP = "dryRun";
 	public static final boolean IS_ALM_UPDATE = new Boolean(System.getProperty(IS_ALM_UPDATE_PROP)).booleanValue();
+	public static final boolean IS_DRY_RUN = new Boolean(System.getProperty(DRY_RUN_PROP)).booleanValue();
 	public static final String DATE_FORMAT1 = "MM/dd/yyyy";
 	// Execution status
 	public static final String PASS = "Pass";

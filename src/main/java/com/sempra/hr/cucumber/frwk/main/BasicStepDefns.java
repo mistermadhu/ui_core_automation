@@ -35,6 +35,7 @@ import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
 import cucumber.api.DataTable;
 import cucumber.api.Scenario;
+import cucumber.api.java.After;
 
 /**
  * 
@@ -272,7 +273,8 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		trdObj.setTestCaseRecordID(Long.parseLong(cdTable.getTestcaseID()));
 		trdObj.setTestStatus(FrameworkConstants.PASS);
 	}
-	public void tearDown(Scenario scenario) {
+
+	protected void tearDown(Scenario scenario) {
 		try {
 			// Update ALM
 			if (FrameworkConstants.IS_ALM_UPDATE) {

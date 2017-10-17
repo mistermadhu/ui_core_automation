@@ -15,6 +15,8 @@ import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
 import cucumber.api.DataTable;
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -182,5 +184,12 @@ public class EligibilityStepDefns extends BasicStepDefns {
 		// Set test case status as pass
 		passTestCase();
 	}
+	
+	
+   @After
+     public void tearDown(Scenario scenario)
+     {
+		super.tearDown(scenario);
+     }
 
 }
