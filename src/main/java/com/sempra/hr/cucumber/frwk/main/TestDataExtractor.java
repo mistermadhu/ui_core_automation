@@ -60,7 +60,7 @@ public class TestDataExtractor {
 					continue;
 				valueList = new ArrayList<String>();
 				for (String value : row) {
-					System.out.print(value + "||");
+					logger.info(value + "||");
 					if (isHeader) {
 						testDataHeaders.add(value);
 					} else {
@@ -103,7 +103,7 @@ public class TestDataExtractor {
 					continue;
 				valueList = new ArrayList<String>();
 				for (String value : row) {
-					System.out.print(value + "||");
+					logger.info(value + "||");
 					if (isHeader) {
 						commonDataHeaders.add(value);
 					} else {
@@ -147,7 +147,7 @@ public class TestDataExtractor {
 					continue;
 				valueList = new ArrayList<String>();
 				for (String value : row) {
-					System.out.print(value + "||");
+					logger.info(value + "||");
 					if (isHeader) {
 						featureDataHeaders.add(value);
 					} else {

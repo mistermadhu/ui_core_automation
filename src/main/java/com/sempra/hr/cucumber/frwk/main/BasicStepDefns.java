@@ -25,6 +25,8 @@ import com.relevantcodes.extentreports.DisplayOrder;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import com.sempra.hr.cucumber.frwk.datatable.PreConditionDataTable;
+import com.sempra.hr.cucumber.frwk.pageobjects.LoginPage;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.testtrack.main.TestCaseInfo;
 import com.sempra.hr.cucumber.frwk.testtrack.main.TestTrackALMClient;
@@ -44,8 +46,9 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 	private ExtentReports extent;
 	private ExtentTest extentReporter;
 	private TestDataExtractor tde;
-	private static WebDriver driver = null;
-	protected TestCaseInfo trdObj;
+	private WebDriver driver = null;
+	private TestCaseInfo trdObj;
+	private PreConditionDataTable cdTable;
 	private static final Logger logger = LoggerFactory.getLogger(BasicStepDefns.class);
 
 	public BasicStepDefns(String workflowName, WebDriverFactory driverFactory) {
@@ -60,12 +63,45 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 			logger.error("Exception while initializing" + exp);
 		}
 	}
+    protected <T> T initializeScenario(Class<T> testDataclassType, DataTable dtObj) throws Exception
+    {
+    	       // Populate Precondition data table object
+    			cdTable=getPreConditionDataTable(dtObj);
+    			
+    			// Load the test data for this Workflow
+    			Object etdObj = getTestDataObject(testDataclassType,cdTable); 
+    			
+    			logger.info("Test data loaded=" + etdObj);
+    			// Launch Browser
+    			launchBrowser();
+    			new LoginPage(getDriver()).Login(cdTable.getUserName(), cdTable.getPassWord());
+    			logger.info("Waiting for some time ...");
+    			waitForDOMtoBeLoaded();
+    			logExtentScreenCapture(LogStatus.PASS, "Launch Vantage Home Page as Admin",
+    					"Expected: User should be able to navigate to Home Page | Actual: Vantage Home Page launched successfully");
+    			T tObj=testDataclassType.cast(etdObj);
+    			return tObj;
+    }
+	private PreConditionDataTable getPreConditionDataTable(DataTable dtObj)
+	{
+		// Load the update the DataTable
+		        PreConditionDataTable cdTable = (PreConditionDataTable) loadDataTable(PreConditionDataTable.class, dtObj);
+				logger.info("Updated data table =" + cdTable);
+		return cdTable;
 
-	public WebDriver getDriver() {
+	}
+	private  <T> T getTestDataObject( Class<T> testDataclassType, PreConditionDataTable cdTable)
+	{
+		 Object obj=getFeatureTestData(testDataclassType, cdTable.getWorksheetID(),
+					cdTable.getTestcaseID(), cdTable.getPermutationNo(), FrameworkConstants.IS_COMMON);
+		 T tObj=testDataclassType.cast(obj);
+		return tObj;
+	}
+	protected WebDriver getDriver() {
 		return this.driver;
 	}
-
-	public void launchBrowser() {
+    
+	private void launchBrowser() {
 		try {
 			maximizeWindow();
 			// implicitWait(30);
@@ -77,7 +113,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		}
 	}
 
-	public void logExtentScreenCapture(LogStatus ls, String msgTitle, String description) {
+	protected void logExtentScreenCapture(LogStatus ls, String msgTitle, String description) {
 		String CSpage;
 		try {
 			CSpage = extentReporter.addScreenCapture(getscreenshot());
@@ -95,7 +131,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		extentReporter = extent.startTest("Report", "EligibilityStepFile report");
 	}
 
-	protected String getscreenshot() throws Exception {
+	private String getscreenshot() throws Exception {
 		UUID uuid = UUID.randomUUID();
 		String strFile = "src/test/results/screenshot-" + uuid + ".png";
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -107,7 +143,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		driver.manage().window().maximize();
 	}
 
-	public void waitForDOMtoBeLoaded() {// implicitWait(int time) {
+	private void waitForDOMtoBeLoaded() {// implicitWait(int time) {
 		// driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 		WebDriverWait wdw = new WebDriverWait(this.driver, FrameworkConstants.VERY_LARGE_TIMEOUT);
 		wdw.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("iframe[src*='logoff']")));
@@ -121,7 +157,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		driver.get(FrameworkConstants.SITE_URL);
 	}
 
-	public Object loadDataTable(Class class1, DataTable dtObj) {
+	private Object loadDataTable(Class dataTableClass, DataTable dtObj) {
 		// TODO Auto-generated method stub
 		try {
 			Map<String, List<String>> dataMap = new Hashtable<String, List<String>>();
@@ -153,14 +189,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 						throw new Exception("The Column Header [" + keyColumnHeaderName
 								+ "] is not found in data Sheet, Please check the feature file");
 					}
-					for (int rowIdx = 1; rowIdx < rawTestDataList.size(); rowIdx++) // exclude
-																					// the
-																					// 1st
-																					// rows,
-																					// which
-																					// is
-																					// a
-																					// header
+					for (int rowIdx = 1; rowIdx < rawTestDataList.size(); rowIdx++) // exclude the 1st row, which is a header
 					{
 						List<String> rowData = rawTestDataList.get(rowIdx);
 						String keyColumnValue = rowData.get(keyColumnHeaderIndex);
@@ -182,7 +211,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 				}
 			}
 			DataAnnoteBeanPopulator populator = new DataAnnoteBeanPopulator(dataMap);
-			Object dataInfo = populator.populate(class1);
+			Object dataInfo = populator.populate(dataTableClass);
 			return dataInfo;
 		} catch (Exception exp) {
 			logger.error("Exception while loading the datatable ::" + exp.getMessage());
@@ -190,7 +219,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		}
 	}
 
-	public Object getFeatureTestData(Class class1, String featureID, String testcaseID, String iterationNo,
+	private Object getFeatureTestData(Class class1, String featureID, String testcaseID, String iterationNo,
 			boolean isCommon) {
 		try {
 			Map<String, List<String>> dataMap;
@@ -227,13 +256,24 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		}
 	}
 
-	public String getCurrentDate(String format) {
+	protected String getCurrentDate(String format) {
 		DateFormat df = new SimpleDateFormat(format);
 		String date = df.format(new Date());
 		return date;
 	}
 
-	public void tearDown(Scenario scenario) {
+	protected PreConditionDataTable getCdTable() {
+		return cdTable;
+	}
+
+	protected  void passTestCase()
+	{
+		// Set Test Case Status
+		trdObj.setTestCaseRecordID(Long.parseLong(cdTable.getTestcaseID()));
+		trdObj.setTestStatus(FrameworkConstants.PASS);
+	}
+
+	protected void tearDown(Scenario scenario) {
 		try {
 			// Update ALM
 			if (FrameworkConstants.IS_ALM_UPDATE) {

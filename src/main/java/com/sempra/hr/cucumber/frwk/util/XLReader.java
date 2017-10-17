@@ -158,7 +158,7 @@ public class XLReader {
 								recordList.add("1");
 							}
 						}
-						System.out.print(row.getCell(j).getStringCellValue() + "|| ");
+						logger.info(row.getCell(j).getStringCellValue() + "|| ");
 						recordList.add(row.getCell(j).getStringCellValue());
 					} else {
 						if (isTestScriptDataSheet) {
@@ -168,7 +168,7 @@ public class XLReader {
 								recordList.add("1");
 							}
 						}
-						System.out.print(FrameworkConstants.EMTPY_LABEL + "|| ");
+						logger.info(FrameworkConstants.EMTPY_LABEL + "|| ");
 						recordList.add("");
 					}
 				}

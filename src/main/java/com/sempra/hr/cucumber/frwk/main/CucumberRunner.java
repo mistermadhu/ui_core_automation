@@ -87,6 +87,11 @@ public class CucumberRunner {
  
    @Test(groups = "cucumber", description = "Runs Cucumber Feature")
     public void runCucumberScenarioOutlines() {
+	   if(FrameworkConstants.IS_DRY_RUN)
+	   {
+	    logger.info("<--------- DRY RUN MODE --------->");
+	    System.setProperty("cucumber.options", "-d");
+	   }
    	    logger.info("Inside Cucumber Scenario @Test ="+this.getTestName());
    	    logger.info(String.format("Run Feature - %s", this.featureFileName));
    	    runCucumber();
