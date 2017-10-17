@@ -13,9 +13,6 @@ public class PreConditionDataTable implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Data(name = "FeatureID")
-	private String featureID;
-
 	@Data(name = "User Type")
 	private String userType;
 
@@ -27,6 +24,12 @@ public class PreConditionDataTable implements Serializable {
 
 	@Data(name = "Description")
 	private String description;
+
+	@Data(name = "FeatureID")
+	private String featureID;
+
+	@Data(name = "WorksheetID")
+	private String worksheetID;
 
 	@Data(name = "TestScriptID")
 	private String testcaseID;
@@ -66,11 +69,15 @@ public class PreConditionDataTable implements Serializable {
 		return permutationNo.replaceAll("\\[", "").replaceAll("\\]", "");
 	}
 
+	public String getWorksheetID() {
+		return worksheetID.replaceAll("\\[", "").replaceAll("\\]", "");
+	}
+
 	@Override
 	public String toString() {
-		return "EligibilityPreConditionDataTable [featureID=" + featureID + ", userType=" + userType + ", userName="
-				+ userName + ", passWord=" + passWord + ", description=" + description + ", testcaseID=" + testcaseID
-				+ ", permutationNo=" + permutationNo + "]";
+		return "PreConditionDataTable [userType=" + userType + ", userName=" + userName + ", passWord=" + passWord
+				+ ", description=" + description + ", featureID=" + featureID + ", worksheetID=" + worksheetID
+				+ ", testcaseID=" + testcaseID + ", permutationNo=" + permutationNo + "]";
 	}
 
 }

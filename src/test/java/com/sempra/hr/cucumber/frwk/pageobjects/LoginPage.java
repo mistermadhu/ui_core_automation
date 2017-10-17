@@ -36,14 +36,14 @@ public class LoginPage {
 	 * @FindBy(id = "portal.login.logIn") private WebElement loginBtn ;
 	 */
 
-	public LifeEventsPage Login(String user, String password) throws Exception {
+	public ADPHomePage Login(String user, String password) throws Exception {
 
 		wu.clickWebElement(driver, adminLoginLink);
 		wu.sendKeysToWebElement(driver, userTxtBox, user);
 		wu.clickWebElement(driver, submitBtn);
 		wu.sendKeysToWebElement(driver, passwordTxtBox, password);
 		wu.clickWebElement(driver, submitBtn);
-		return new LifeEventsPage(this.driver);
+		return new ADPHomePage(this.driver);
 
 	}
 }

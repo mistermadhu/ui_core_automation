@@ -27,10 +27,9 @@ import cucumber.api.java.en.When;
  */
 public class EligibilityStepDefns extends BasicStepDefns {
 
-	private EnrollmentsPage enrlPage;
 	private EligibilityTestData etdObj;
-	private PreConditionDataTable cdTable;
 	private LifeEventsPage lePage;
+	private EnrollmentsPage enrlPage;
 	private static final Logger logger = LoggerFactory.getLogger(EligibilityStepDefns.class);
 
 	public EligibilityStepDefns(WebDriverFactory driverFactory) throws Exception { // Cucumber runtime creates a default instance of this class
@@ -39,23 +38,10 @@ public class EligibilityStepDefns extends BasicStepDefns {
 
 	@Given("^I am on Home Page as Admin$")
 	public void i_am_on_Home_Page_as_Admin(DataTable dtObj) throws Exception {
-		// Load the update the DataTable
-		cdTable = (PreConditionDataTable) loadDataTable(PreConditionDataTable.class, dtObj);
-		logger.info("Updated data table =" + cdTable);
-
-		// Load the test data for this Workflow
-		etdObj = (EligibilityTestData) getFeatureTestData(EligibilityTestData.class, cdTable.getFeatureID(),
-				cdTable.getTestcaseID(), cdTable.getPermutationNo(), FrameworkConstants.IS_COMMON);
-		logger.info("Test data loaded=" + etdObj);
-
-		// Launch Browser
-		launchBrowser();
-		lePage = new LoginPage(getDriver()).Login(cdTable.getUserName(), cdTable.getPassWord());
-		logger.info("Waiting for some time ...");
-		waitForDOMtoBeLoaded();
-		logExtentScreenCapture(LogStatus.PASS, "Launch Vantage Home Page as Admin",
-				"Expected: User should be able to navigate to Home Page | Actual: Vantage Home Page launched successfully");
-
+		// Initialize Scenario - setsPrecondition data, Launches the Browser, Logins as a given user & return Test data object
+		etdObj=initializeScenario(EligibilityTestData.class, dtObj);
+		// Initialize the Landing page after Login
+		lePage=new LifeEventsPage(this.getDriver());
 	}
 
 	@When("^I click on People from the Menu bar$")
@@ -192,10 +178,9 @@ public class EligibilityStepDefns extends BasicStepDefns {
 		logExtentScreenCapture(LogStatus.PASS, "Verify if the Eligibility Summary Opens in a new web page ",
 				"Expected: Eligibility Summary of the Employee should be opened in a new web page | Actual: Eligibility Summary of the Employee Opens in a new web page successfully");
 		driver.switchTo().window(winHandleBefore);
-
-		// Set Test Case Status
-		trdObj.setTestCaseRecordID(Long.parseLong(cdTable.getTestcaseID()));
-		trdObj.setTestStatus(FrameworkConstants.PASS);
+        
+		// Set test case status as pass
+		passTestCase();
 	}
 
 }
