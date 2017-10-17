@@ -6,11 +6,9 @@ import org.slf4j.LoggerFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
 import com.sempra.hr.cucumber.frwk.datatable.EligibilityTestData;
-import com.sempra.hr.cucumber.frwk.datatable.PreConditionDataTable;
 import com.sempra.hr.cucumber.frwk.main.BasicStepDefns;
-import com.sempra.hr.cucumber.frwk.pageobjects.LoginPage;
-import com.sempra.hr.cucumber.frwk.pageobjects.benefits.LifeEventsPage;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.EnrollmentsPage;
+import com.sempra.hr.cucumber.frwk.pageobjects.benefits.LifeEventsPage;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
@@ -61,7 +59,7 @@ public class EligibilityStepDefns extends BasicStepDefns {
 				"Expected: Benefits Sub Menu should be displayed | Actual: Benefits Sub Menu is displayed successfully");
 	}
 
-	@And("^I click on Life Events$")
+	@And("^I click on Life Eventshun$")
 	public void i_click_on_Life_Events() throws Exception {
 
 		lePage.click_LifeEventsMenuItem();
