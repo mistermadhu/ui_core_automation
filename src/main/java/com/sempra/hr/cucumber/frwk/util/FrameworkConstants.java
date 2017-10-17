@@ -18,6 +18,11 @@ public class FrameworkConstants {
 	public static final String BROWSER_TYPE_PROP = "browser.type";
 	public static final String SITE_URL_PROP = "site.url";
 	public static final String ALM_URL_PROP = "alm.url";
+	private static final String ALM_USER_PROP="alm.user";
+	private static final String ALM_PASS_PROP="alm.password";
+	private static final String ALM_TEST_RUN_PROP="alm.testrunset";
+	private static final String ALM_USER_FULL_PROP="alm.user.fullname";
+	private static final String ALM_PROJECT_PROP="alm.project";
 	public static final String TESTDATA_XLS_LOCATION_PROP = "testdata.xls.location";
 	public static final String WEBDRIVER_FOLDER_LOCATION_PROP = "driver.location";
 	public static final String IS_ALM_UPDATE_PROP = "isALMUpdate";
@@ -42,6 +47,12 @@ public class FrameworkConstants {
 	public static final String SITE_URL = myPropertyUtils.getProperty(SITE_URL_PROP);
 
 	public static final String ALM_URL = myPropertyUtils.getProperty(ALM_URL_PROP);
+	
+	public static final String ALM_USER=myPropertyUtils.getProperty(ALM_USER_PROP);
+	public static final String ALM_PASS=myPropertyUtils.getProperty(ALM_PASS_PROP);
+	public static final String ALM_TEST_RUN=myPropertyUtils.getProperty(ALM_TEST_RUN_PROP);
+	public static final String ALM_USER_FULL=myPropertyUtils.getProperty(ALM_USER_FULL_PROP);
+	public static final String ALM_PROJECT=myPropertyUtils.getProperty(ALM_PROJECT_PROP);
 
 	public static final int UNAUTHORIZED = 401;
 	public static final int GET_SUCCESS = 200;

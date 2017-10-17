@@ -26,4 +26,4 @@ When I click on Eligibility Summary link in My Links dropdown
 Then I should be able to see Eligibility Summary of the employee on a new web page
 Examples: 
 |Test_Script_Id| Permutation_Number |
-|22746         |1                   |
+| BEN_22746        |1                   |
