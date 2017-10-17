@@ -59,7 +59,7 @@ public class EligibilityStepDefns extends BasicStepDefns {
 				"Expected: Benefits Sub Menu should be displayed | Actual: Benefits Sub Menu is displayed successfully");
 	}
 
-	@And("^I click on Life Eventshun$")
+	@And("^I click on Life Events$")
 	public void i_click_on_Life_Events() throws Exception {
 
 		lePage.click_LifeEventsMenuItem();
