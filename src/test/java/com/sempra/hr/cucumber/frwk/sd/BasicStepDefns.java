@@ -247,6 +247,8 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 				List<String> aList = new ArrayList();
 				aList.add(val);
 				dataMapList.put(dataHeaders.get(idx + 1), aList);
+				if(idx == dataHeaders.size()-2)
+					break;
 				idx++;
 			}
 			DataAnnoteBeanPopulator populator = new DataAnnoteBeanPopulator(dataMapList);

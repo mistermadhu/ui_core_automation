@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WebUtil {
@@ -60,5 +61,42 @@ public class WebUtil {
 			// Screenshot code
 		}
 	}
+	
+	public void selectValueFromDropDown(WebDriver driver, WebElement element, String text) {
+		try {
+			isElementVisible(driver, element);
+			Select dropdown = new Select(element);
+			dropdown.selectByVisibleText(text);
+			} catch (Exception e) {
+			// Screenshot code
+		} 
+	}
+	
+	public void iframesSwitchToChild(WebDriver driver,WebElement element) {
+		
+		try {
+			isElementVisible(driver, element);
+			driver.switchTo().frame(element);
+			
+		}catch (Exception e) {
+			//get Screenshot
+		}
+	}
+	
+	public void iframesSwitchToParent(WebDriver driver) {
+		
+		try {
+			driver.switchTo().defaultContent();
+			
+		}catch (Exception e) {
+			//get Screenshot
+		}
+	}
+	
+	/*public void isEnabled(WebDriver driver,WebElement element) {
+		
+		WebDriverWait wait = new WebDriverWait(driver, FrameworkConstants.LARGE_TIMEOUT);
+		
+	}*/
 
 }

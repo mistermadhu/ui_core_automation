@@ -24,6 +24,12 @@ public class ADPHomePage {
 			.xpath(".//*[@id='revit_layout_TabContainer_2_tablist_dijit_layout_ContentPane_9']/span[2]/span");
 	@FindBy(xpath = ".//*[@id='People_ttd_pracChangeBenefits']/span[2]")
 	private WebElement lifeEventsMenuItem;
+	@FindBy(id="Process_navItem_label")
+	private WebElement processMenu;
+	@FindBy(xpath = "//span[text()='Additional Services']")
+	private WebElement additionalServices;
+	@FindBy(xpath = "//span[text()='Recruiting']")
+	private WebElement recruiting;
 	protected String portalFrameID = "portalIFrame_iframe";// convert to By
 	private static final Logger logger = LoggerFactory.getLogger(ADPHomePage.class);
 
@@ -62,6 +68,25 @@ public class ADPHomePage {
 		wu.clickWebElement(getDriver(), lifeEventsMenuItem);
 
 	}
+	
+	public void click_ProcessMenu() throws Exception{
+		wu.isElementPresent(driver, By.id(portalFrameID));
+		wu.clickWebElement(getDriver(), processMenu);
+		logger.debug("Process Menu is Clicked");
+	}
+	
+	public void click_AdditionalServices() throws Exception{
+		wu.isElementPresent(driver, By.id(portalFrameID));
+		wu.clickWebElement(getDriver(), additionalServices);
+		logger.debug("Additional Services is Clicked");
+	}
+	
+	public void click_Recruiting() throws Exception{
+		wu.isElementPresent(driver, By.id(portalFrameID));
+		wu.clickWebElement(getDriver(), recruiting);
+		logger.debug("Recruiting is Clicked");
+	}
+
 
 }
 

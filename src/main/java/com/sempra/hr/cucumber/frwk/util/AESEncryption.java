@@ -102,13 +102,12 @@ public class AESEncryption {
     
     public static void main(String[] args) throws Exception {
         String plainTextPassword = "xxxxxx";
-        String hexKeyStr="F418B3C83661093A48828814EBF42F75";
         //SecretKey secretKey=getSecretEncryptionKey();
-        String encryptedTextInHex = encryptText(plainTextPassword, hexKeyStr);
-        String decryptedTextInHex = decryptText(encryptedTextInHex, hexKeyStr);
+        String encryptedTextInHex = encryptText(plainTextPassword, FrameworkConstants.HEXX);
+        String decryptedTextInHex = decryptText(encryptedTextInHex, FrameworkConstants.HEXX);
         
         logger.info("Original Text:" + plainTextPassword);
-        logger.info("AES Key (Hex Form):"+hexKeyStr);//bytesToHex(secretKey.getEncoded()));
+        logger.info("AES Key (Hex Form):"+FrameworkConstants.HEXX);//bytesToHex(secreetKey.getEncoded()));
         logger.info("Encrypted Text (Hex Form):"+encryptedTextInHex);
         logger.info("Descrypted Text:"+decryptedTextInHex);
         
