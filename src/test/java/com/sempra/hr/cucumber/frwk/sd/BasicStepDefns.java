@@ -31,6 +31,7 @@ import com.sempra.hr.cucumber.frwk.pageobjects.LoginPage;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.testtrack.main.TestCaseInfo;
 import com.sempra.hr.cucumber.frwk.testtrack.main.TestTrackALMClient;
+import com.sempra.hr.cucumber.frwk.util.AESEncryption;
 import com.sempra.hr.cucumber.frwk.util.DataAnnoteBeanPopulator;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
@@ -75,7 +76,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
     			logger.info("Test data loaded=" + etdObj);
     			// Launch Browser
     			launchBrowser();
-    			new LoginPage(getDriver()).Login(cdTable.getUserName(), cdTable.getPassWord());
+    			new LoginPage(getDriver()).Login(AESEncryption.decryptText(cdTable.getUserName(), FrameworkConstants.HEXX), AESEncryption.decryptText(cdTable.getPassWord(), FrameworkConstants.HEXX));
     			logger.info("Waiting for some time ...");
     			waitForDOMtoBeLoaded();
     			logExtentScreenCapture(LogStatus.PASS, "Launch Vantage Home Page as Admin",

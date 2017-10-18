@@ -158,7 +158,7 @@ public class XLReader {
 								recordList.add("1");
 							}
 						}
-						logger.info(row.getCell(j).getStringCellValue() + "|| ");
+						//logger.info(row.getCell(j).getStringCellValue() + "|| ");
 						recordList.add(row.getCell(j).getStringCellValue());
 					} else {
 						if (isTestScriptDataSheet) {
