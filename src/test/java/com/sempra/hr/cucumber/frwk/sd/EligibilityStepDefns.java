@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
 import com.sempra.hr.cucumber.frwk.datatable.EligibilityTestData;
-import com.sempra.hr.cucumber.frwk.main.BasicStepDefns;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.EnrollmentsPage;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.LifeEventsPage;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
@@ -40,6 +39,8 @@ public class EligibilityStepDefns extends BasicStepDefns {
 	public void i_am_on_Home_Page_as_Admin(DataTable dtObj) throws Exception {
 		// Initialize Scenario - setsPrecondition data, Launches the Browser, Logins as a given user & return Test data object
 		etdObj=initializeScenario(EligibilityTestData.class, dtObj);
+		// Set Helix Test case id to testcase Info
+		trdObj.setTestCaseRecordID(etdObj.getHelixTestScriptId());
 		// Initialize the Landing page after Login
 		lePage=new LifeEventsPage(this.getDriver());
 	}
@@ -59,7 +60,7 @@ public class EligibilityStepDefns extends BasicStepDefns {
 				"Expected: Benefits Sub Menu should be displayed | Actual: Benefits Sub Menu is displayed successfully");
 	}
 
-	@And("^I click on Life Eventshun$")
+	@And("^I click on Life Events$")
 	public void i_click_on_Life_Events() throws Exception {
 
 		lePage.click_LifeEventsMenuItem();
@@ -180,7 +181,7 @@ public class EligibilityStepDefns extends BasicStepDefns {
 		driver.switchTo().window(winHandleBefore);
         
 		// Set test case status as pass
-		passTestCase();
+		trdObj.setTestStatus(FrameworkConstants.PASS);
 	}
 	
 	

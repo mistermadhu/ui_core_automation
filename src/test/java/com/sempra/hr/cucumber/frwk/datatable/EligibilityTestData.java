@@ -17,6 +17,8 @@ public class EligibilityTestData implements Serializable {
 	private String testCaseID;
 	@Data(name = "Permutation_Number")
 	private String permutationNo;
+	@Data(name = "Helix_Test_Case_Number")
+	private String helixTestScriptId;
 	@Data(name = "Scenario Name")
 	private String scenarioName;
 	@Data(name = "Feature_Id")
@@ -49,11 +51,9 @@ public class EligibilityTestData implements Serializable {
 	public String getPermutationNo() {
 		return permutationNo.replaceAll("\\[", "").replaceAll("\\]", "");
 	}
-
-	@Override
-	public String toString() {
-		return "EligibilityTestData [testCaseID=" + testCaseID + ", permutationNo=" + permutationNo + ", scenarioName="
-				+ scenarioName + ", rmID=" + featureID + ", empID=" + empID + ", employeeName=" + employeeName + "]";
+	public String getHelixTestScriptId() {
+		return helixTestScriptId.replaceAll("\\[", "").replaceAll("\\]", "");
 	}
+ 
 
 }

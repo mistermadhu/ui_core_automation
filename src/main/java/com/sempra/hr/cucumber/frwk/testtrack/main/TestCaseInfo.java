@@ -6,17 +6,14 @@ public class TestCaseInfo {
 	private double hours = 0.0;
 	private long parentEventId = 0L;
 	private double totalTimeSpent = 0.0;
-	private long testCaseRecordID = 22746L;
+	private String testCaseRecordID;
 	private String testStatus = "Fail";
-	private String strTTUser = "SempraHQ";// "Administrator";
-	private String strTTPassword = "Vantage2018!";
-	private String testRunSet = "UAT Cycle 1";// "Beta 4 Tests";// "Alpha 1
-												// Tests";
-	private String strTTUserFull = "Automation Team, ProKarma";
-	private String projectName = "Sandbox My Info";// "NEW My Info,the next
-													// generations";//"Sandbox -
-													// My Info, the next gen";
-
+	private String strTTUser;
+	private String strTTPassword;
+	private String testRunSet;
+	private String strTTUserFull;
+	private String projectName;
+	
 	public double getHours() {
 		return hours;
 	}
@@ -42,10 +39,10 @@ public class TestCaseInfo {
 	}
 
 	public long getTestCaseRecordID() {
-		return testCaseRecordID;
+		return Long.parseLong(testCaseRecordID);
 	}
 
-	public void setTestCaseRecordID(long testCaseRecordID) {
+	public void setTestCaseRecordID(String testCaseRecordID) {
 		this.testCaseRecordID = testCaseRecordID;
 	}
 

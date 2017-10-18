@@ -1,4 +1,4 @@
-package com.sempra.hr.cucumber.frwk.main;
+package com.sempra.hr.cucumber.frwk.sd;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -26,10 +26,12 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.sempra.hr.cucumber.frwk.datatable.PreConditionDataTable;
+import com.sempra.hr.cucumber.frwk.main.TestDataExtractor;
 import com.sempra.hr.cucumber.frwk.pageobjects.LoginPage;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.testtrack.main.TestCaseInfo;
 import com.sempra.hr.cucumber.frwk.testtrack.main.TestTrackALMClient;
+import com.sempra.hr.cucumber.frwk.util.AESEncryption;
 import com.sempra.hr.cucumber.frwk.util.DataAnnoteBeanPopulator;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
@@ -47,8 +49,8 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 	private ExtentTest extentReporter;
 	private TestDataExtractor tde;
 	private WebDriver driver = null;
-	private TestCaseInfo trdObj;
 	private PreConditionDataTable cdTable;
+	protected TestCaseInfo trdObj;
 	private static final Logger logger = LoggerFactory.getLogger(BasicStepDefns.class);
 
 	public BasicStepDefns(String workflowName, WebDriverFactory driverFactory) {
@@ -74,7 +76,7 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
     			logger.info("Test data loaded=" + etdObj);
     			// Launch Browser
     			launchBrowser();
-    			new LoginPage(getDriver()).Login(cdTable.getUserName(), cdTable.getPassWord());
+    			new LoginPage(getDriver()).Login(AESEncryption.decryptText(cdTable.getUserName(), FrameworkConstants.HEXX), AESEncryption.decryptText(cdTable.getPassWord(), FrameworkConstants.HEXX));
     			logger.info("Waiting for some time ...");
     			waitForDOMtoBeLoaded();
     			logExtentScreenCapture(LogStatus.PASS, "Launch Vantage Home Page as Admin",
@@ -266,15 +268,20 @@ public class BasicStepDefns { // Cucumber runtime creates a default instance of
 		return cdTable;
 	}
 
-	protected  void passTestCase()
+	private  void passTestCase()
 	{
 		// Set Test Case Status
-		trdObj.setTestCaseRecordID(Long.parseLong(cdTable.getTestcaseID()));
-		trdObj.setTestStatus(FrameworkConstants.PASS);
+		trdObj.setStrTTUser(FrameworkConstants.ALM_USER);
+		trdObj.setStrTTPassword(FrameworkConstants.ALM_PASS);
+		trdObj.setTestRunSet(FrameworkConstants.ALM_TEST_RUN);
+		trdObj.setStrTTUserFull(FrameworkConstants.ALM_USER_FULL);
+		trdObj.setProjectName(FrameworkConstants.ALM_PROJECT);
 	}
 
 	protected void tearDown(Scenario scenario) {
 		try {
+			//Update Test case info
+			 passTestCase();
 			// Update ALM
 			if (FrameworkConstants.IS_ALM_UPDATE) {
 				TestTrackALMClient.INSTANCE.createAndUpdateTestRun(trdObj);
