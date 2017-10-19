@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sempra.hr.cucumber.frwk.testtrack.util.CEvent;
+import com.sempra.hr.cucumber.frwk.testtrack.util.CFileAttachment;
 import com.sempra.hr.cucumber.frwk.testtrack.util.CItemToTrack;
 import com.sempra.hr.cucumber.frwk.testtrack.util.CProject;
 import com.sempra.hr.cucumber.frwk.testtrack.util.CTestCase;
@@ -115,7 +116,20 @@ public enum TestTrackALMClient {
 				objTTEvents[0] = objTTEvent;
 
 				objTTTestRun.setEventlist(objTTEvents);
-
+				
+				// Save attachment
+				/*CFileAttachment[] attachmentList=new CFileAttachment(
+				           byte[] mPFileData,
+				           "C:/Work/Projects/Sempra/ui_framework/Report.html",
+				           Calendar.getInstance(),
+				           Calendar.getInstance(),
+				           testRunID,
+				           "report.zip",
+				           "Run Results",
+				           1L,
+				           "complete");
+				objTTTestRun.setAttachmentlist(attachmentList);
+*/
 				// Save the events details to a test run
 				objTT.saveTestRun(lngCookie, objTTTestRun);
 

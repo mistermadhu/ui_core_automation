@@ -18,13 +18,15 @@ import cucumber.runtime.io.ResourceLoader;
  */
 public class CucumberRuntimeOptions {
 	private String feature;
+	private String glue;
 	private String tags;
 	// private cucumber.runtime.Runtime runtime;
 	private RuntimeOptions ro;
 	private static final Logger logger = LoggerFactory.getLogger(CucumberRuntimeOptions.class);
 
-	public CucumberRuntimeOptions(String feature, String tags) {
+	public CucumberRuntimeOptions(String feature, String glue, String tags) {
 		this.feature = feature;
+		this.glue=glue;
 		this.tags = tags;
 	}
 
@@ -46,7 +48,7 @@ public class CucumberRuntimeOptions {
 		ro.addPlugin(pluginList);
 
 		ro.getGlue().clear();
-		ro.getGlue().add("classpath:");
+		ro.getGlue().add("classpath:"+this.glue);
 
 		ro.getFeaturePaths().clear();
 		ro.getFeaturePaths().add(this.feature);

@@ -133,7 +133,7 @@
 				<configuration>
 					<suiteXmlFiles>
 					<!-- TestNG suite XML files -->
-						<suiteXmlFile>src/test/resources/sempraSampleTest.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/resources/tngxml/test/sempraSampleTest.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 		  </plugin>

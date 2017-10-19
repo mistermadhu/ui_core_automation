@@ -13,7 +13,8 @@ public class RequisitionsPage extends ADPHomePage {
 	private WebElement reqs;
 	@FindBy(xpath="//a[text()='Create:  Corp and Global']")
 	private WebElement createCorpAndGlobal;
-	
+	@FindBy(xpath = "/html/body/div[5]/table/tbody/tr/td/table/tbody/tr[1]/td/div/table/tbody/tr[2]/td[2]/span/span/a")
+	private WebElement createUtilitiesMenuItem; 
 	public RequisitionsPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
@@ -28,5 +29,10 @@ public class RequisitionsPage extends ADPHomePage {
 		wu.isElementVisible(getDriver(), createCorpAndGlobal);
 		wu.clickWebElement(getDriver(), createCorpAndGlobal);
 	}
+      public  RequisitionUtilitiesPage clickCreateUtilities() throws Exception {
+		wu.isElementVisible(getDriver(), createUtilitiesMenuItem);
+		wu.clickWebElement(getDriver(), createUtilitiesMenuItem);
+		return new RequisitionUtilitiesPage(getDriver());
+	} 
 
 }

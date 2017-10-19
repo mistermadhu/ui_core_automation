@@ -48,7 +48,9 @@ public class CucumberRunner {
 	private static final Logger logger = LoggerFactory.getLogger(CucumberRunner.class);
 	//private TestNGCucumberRunner testNGCucumberRunner;
     private String featureFileName;
+    private String glue;
     private String tags;
+    
 
 	public static String currentDateTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -68,12 +70,13 @@ public class CucumberRunner {
 	
 	}
 	@BeforeTest(alwaysRun = true)
-	@Parameters({"cucumber.features","cucumber.tags","testdata.file","isCommon"})
-	public void beforeTest(String featureFileName, String tags, String testdataFile,Boolean isCommon)
+	@Parameters({"cucumber.features","cucumber.glue","cucumber.tags","testdata.file","isCommon"})
+	public void beforeTest(String featureFileName, String glue, String tags, String testdataFile,Boolean isCommon)
 	{
 		FrameworkConstants.TEST_DATA_FILE=testdataFile;
 		FrameworkConstants.IS_COMMON=isCommon;
 		this.featureFileName=featureFileName;
+		this.glue=glue;
 		this.tags=tags;
 		logger.info("This is a suite with featuerFileName="+featureFileName);
 		
@@ -102,7 +105,7 @@ public class CucumberRunner {
    	//logger.info("Name="+name);
   		try {
   			    // Set TestNG parameters and Get Runtime Options object
-  		 	    RuntimeOptions ro=new CucumberRuntimeOptions(this.featureFileName,this.tags).getCucumberRuntimeOptions();
+  		 	    RuntimeOptions ro=new CucumberRuntimeOptions(this.featureFileName,this.glue,this.tags).getCucumberRuntimeOptions();
 		   		
   		 	    ClassLoader classLoader = getClass().getClassLoader();
 		 	    ResourceLoader resourceLoader = new MultiLoader(classLoader);

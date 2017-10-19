@@ -1,5 +1,8 @@
 package com.sempra.hr.cucumber.frwk.util;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -92,11 +95,22 @@ public class WebUtil {
 			//get Screenshot
 		}
 	}
-	
-	/*public void isEnabled(WebDriver driver,WebElement element) {
+    public void switchToNextWindowHandle(String parentHandle, WebDriver driver) {
+		Set<String> windowHandles =  driver.getWindowHandles();
 		
-		WebDriverWait wait = new WebDriverWait(driver, FrameworkConstants.LARGE_TIMEOUT);
+		Iterator<String> i1 = windowHandles.iterator();
 		
-	}*/
+		while(i1.hasNext()) {
+			
+			String childWindow = i1.next();
+			
+			if(!parentHandle.equalsIgnoreCase(childWindow)) {
+				driver.switchTo().window(childWindow);
+			}
+		}
+			
+		
+		
+	}
 
 }

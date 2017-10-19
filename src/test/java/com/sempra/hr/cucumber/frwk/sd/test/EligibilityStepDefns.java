@@ -1,4 +1,4 @@
-package com.sempra.hr.cucumber.frwk.sd;
+package com.sempra.hr.cucumber.frwk.sd.test;
 
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -8,6 +8,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.sempra.hr.cucumber.frwk.datatable.EligibilityTestData;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.EnrollmentsPage;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.LifeEventsPage;
+import com.sempra.hr.cucumber.frwk.sd.BasicStepDefns;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 

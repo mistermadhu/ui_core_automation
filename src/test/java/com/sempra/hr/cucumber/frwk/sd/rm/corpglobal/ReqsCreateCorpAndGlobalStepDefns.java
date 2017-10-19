@@ -1,13 +1,12 @@
-package com.sempra.hr.cucumber.frwk.sd;
+package com.sempra.hr.cucumber.frwk.sd.rm.corpglobal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sempra.hr.cucumber.frwk.datatable.EligibilityTestData;
 import com.sempra.hr.cucumber.frwk.datatable.ReqsCreateCorpAndGlobalTestData;
-import com.sempra.hr.cucumber.frwk.pageobjects.benefits.LifeEventsPage;
 import com.sempra.hr.cucumber.frwk.pageobjects.rm.ReqsCreateCorpAndGlobalPage;
 import com.sempra.hr.cucumber.frwk.pageobjects.rm.RequisitionsPage;
+import com.sempra.hr.cucumber.frwk.sd.BasicStepDefns;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 
 import cucumber.api.DataTable;

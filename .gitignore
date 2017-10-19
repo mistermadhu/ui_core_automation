@@ -19,6 +19,7 @@ src/test/results/
 .idea/
 ui_framework.iml
 test-output/
+bak/
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 

@@ -21,22 +21,23 @@ Feature: Create job requsition
 #	RM_BO_04.1 - RM_UCS_003.3 - RM_TS_065
 
 
-@Regression 
-Scenario Outline: Create Job Requisition for Corporate and Global
+@Regression
+Scenario Outline: Create Job Requisition for Utilities
 
-# Scenario Description: This scenario covers the Test Scripts of Create Job Requisition that uses Corporate and Global Form
-
- Given I am logged on to the administration side of MyInfo as an HR or Recruitment Manager
+# Scenario Description: This scenario covers the Test Scripts of Create Job Requisition that uses Utilities Form
+    Given I am logged on to the administration side of MyInfo as an HR or Recruitment Manager
 |Credentials::UserType   | Recruitment   |
 |FeatureID               | RM__FTR_01          |
-|WorksheetID               | RM_FTR_001_CorpNGlobal |
+|WorksheetID               | RM_FTR_001_Utilities |
 |TestScriptID              | <Test_Script_Id>        |
 |PermutationNumber              | <Permutation_Number>  |
-    When I open create new Corporate and Global req form
+    When I open create new utilities req form
     And I fill in the required info and then click Create button
     Then the job posting should be created and saved as Draft
+
     
 Examples: 
 |Test_Script_Id   | Permutation_Number   |
-| RM_TS_114       |1                     |
+| RM_TS_114      | 1                                         |
+
 

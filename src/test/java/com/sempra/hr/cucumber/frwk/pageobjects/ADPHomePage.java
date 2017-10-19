@@ -85,6 +85,10 @@ public class ADPHomePage {
 		wu.isElementPresent(driver, By.id(portalFrameID));
 		wu.clickWebElement(getDriver(), recruiting);
 		logger.debug("Recruiting is Clicked");
+		String parentWindow = driver.getWindowHandle();
+		wu.switchToNextWindowHandle(parentWindow,driver);
+		logger.debug("Switched to new Tab");
+		
 	}
 
 
