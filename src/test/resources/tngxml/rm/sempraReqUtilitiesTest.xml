@@ -9,8 +9,8 @@
 <listener class-name="com.sempra.hr.cucumber.frwk.listeners.ExecutionListener"/>
 </listeners>
   <test name="Sample Test">
-  <parameter name="cucumber.features" value="src/test/resources/features/rm/01 Create Job Requisition.feature" />
-  <parameter name="cucumber.glue" value="com.sempra.hr.cucumber.frwk.sd.rm.utilities" />
+  <parameter name="cucumber.features" value="src/test/resources/features/rm/02 Create Job Requisition.feature" />
+  <parameter name="cucumber.glue" value="com.sempra.hr.cucumber.frwk.sd" />
   <parameter name="cucumber.tags" value="@Regression" />
   <parameter name="testdata.file" value="RM 01 Create Requisition Input Datasheet.xlsx" />
   <parameter name="isCommon" value="false" />

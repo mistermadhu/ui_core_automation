@@ -44,7 +44,7 @@ public class ADPHomePage {
 	}
 
 	public void click_PeopleMenu() throws Exception {
-		wu.isElementPresent(driver, By.id(portalFrameID)); // for Firefox
+		wu.isElementPresent(driver, By.id(portalFrameID)); // for Firefox, // The top menu should have this condition
 		wu.clickWebElement(getDriver(), peopleMenu);
 		logger.debug("People Menu is clicked");
 		// isElementVisible(driver,unknownElement);
@@ -70,19 +70,17 @@ public class ADPHomePage {
 	}
 	
 	public void click_ProcessMenu() throws Exception{
-		wu.isElementPresent(driver, By.id(portalFrameID));
+		wu.isElementPresent(driver, By.id(portalFrameID));  // The top menu should have this condition
 		wu.clickWebElement(getDriver(), processMenu);
 		logger.debug("Process Menu is Clicked");
 	}
 	
 	public void click_AdditionalServices() throws Exception{
-		wu.isElementPresent(driver, By.id(portalFrameID));
 		wu.clickWebElement(getDriver(), additionalServices);
 		logger.debug("Additional Services is Clicked");
 	}
 	
 	public void click_Recruiting() throws Exception{
-		wu.isElementPresent(driver, By.id(portalFrameID));
 		wu.clickWebElement(getDriver(), recruiting);
 		logger.debug("Recruiting is Clicked");
 		String parentWindow = driver.getWindowHandle();

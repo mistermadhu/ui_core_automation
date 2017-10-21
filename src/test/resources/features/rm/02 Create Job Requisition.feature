@@ -21,26 +21,28 @@ Feature: Create job requsition
 #	RM_BO_04.1 - RM_UCS_003.3 - RM_TS_065
 
 
-@Regression 
-Scenario Outline: Create Job Requisition for Corporate and Global
+@Regression
+Scenario Outline: Create Job Requisition for Utilities
 
-# Scenario Description: This scenario covers the Test Scripts of Create Job Requisition that uses Corporate and Global Form
+# Scenario Description: This scenario covers the Test Scripts of Create Job Requisition that uses Utilities Form
 
  Given I am on Home Page as a Recruitment Manager
-|Credentials::UserType   | Recruitment|
+|Credentials::UserType   | Recruitment   |
 |FeatureID               | RM__FTR_01          |
-|WorksheetID               | RM_FTR_001_CorpNGlobal |
+|WorksheetID               | RM_FTR_001_Utilities |
 |TestScriptID              | <Test_Script_Id>        |
 |PermutationNumber              | <Permutation_Number>  |
 When I click on Process form the Menu bar
 And I click on Additional services from the Sub Menu
 And I click on Recruiting from the Sub Menu
 And I click on Reqs form the Menu bar
-And I click on Create Corp Global from the Sub Menu
-And I fill in the Corp Global Info and then click Create button
-Then the Corp Global job posting should be created and saved as Draft
+And I click on Create Utilities from the Sub Menu
+And I fill in the Utilities Info and then click Create button
+Then the Utilities job posting should be created and saved as Draft
+
     
 Examples: 
 |Test_Script_Id   | Permutation_Number   |
-| RM_TS_114       |1                     |
+| RM_TS_114      | 1                                         |
+
 

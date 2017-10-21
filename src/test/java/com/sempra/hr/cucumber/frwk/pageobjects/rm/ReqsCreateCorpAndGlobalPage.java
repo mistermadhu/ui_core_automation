@@ -1,5 +1,6 @@
 package com.sempra.hr.cucumber.frwk.pageobjects.rm;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -36,6 +37,7 @@ public class ReqsCreateCorpAndGlobalPage extends RequisitionsPage {
 	@FindBy(name="numOpenings_RTiReq_numberCtrl")
 	private WebElement numberofPositions;
 	public void enterNumberofPositions(String numberofPositions_Text) throws Exception{
+		wu.clearText(getDriver(), numberofPositions);
 		wu.sendKeysToWebElement(getDriver(), numberofPositions, numberofPositions_Text);
 	}
 	
@@ -52,16 +54,19 @@ public class ReqsCreateCorpAndGlobalPage extends RequisitionsPage {
 		wu.selectValueFromDropDown(getDriver(), payGroup, payGroup_Text);
 	}
 	
-	@FindBy(name="departmentCode_RTiReq_ms_ac_sf")
+	@FindBy(xpath="//textarea[@name='departmentCode_RTiReq_ms_ac_sf']")
 	private WebElement department;
 	public void enterDepartment(String department_Text)throws Exception {
+		
 		wu.sendKeysToWebElement(getDriver(), department, department_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), department);
 	}
 	
-	@FindBy(name="costNumCode_RTiReq_ms_ac_sf")
+	@FindBy(xpath="//textarea[@name='costNumCode_RTiReq_ms_ac_sf']")
 	private WebElement costCenter;
 	public void enterCostCenter(String costCenter_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), costCenter, costCenter_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), costCenter);
 	}
 	
 	@FindBy(name="zzreqDesiredBldgSeatLocation_RTiCustomReq")
@@ -100,33 +105,36 @@ public class ReqsCreateCorpAndGlobalPage extends RequisitionsPage {
 		wu.sendKeysToWebElement(getDriver(), veReq, veReq_Text);
 	}
 	
-	@FindBy(name="locationCode_RTiReq_ms_ac_sf")
+	@FindBy(xpath="//textarea[@name='locationCode_RTiReq_ms_ac_sf']")
 	private WebElement location;
 	public void enterLocation(String location_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), location, location_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), location);
 	}
-	@FindBy(name="positionCode_RTiReq_ms_ac_sf")
+	@FindBy(xpath="//textarea[@name='positionCode_RTiReq_ms_ac_sf']")
 	private WebElement internalJobTitle_JobCode;
 	public void enterInternalJobTitle_JobCode(String internalJobTitle_JobCode_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), internalJobTitle_JobCode, internalJobTitle_JobCode_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), internalJobTitle_JobCode);
 	}
 	
 	@FindBy(name="ptitle_RTiReq")
 	private WebElement external_PublishedJobTitle;
 	public void enterExternal_PublishedJobTitle(String external_PublishedJobTitle_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), external_PublishedJobTitle, external_PublishedJobTitle_Text);
+		//wu.sendKeysToWebElement(getDriver(), external_PublishedJobTitle);
 	}
 	
 	@FindBy(name="payType_RTiReq")
-	private WebElement payType;
+	private WebElement basePayType;
 	public void selectPayType(String payType_Text)throws Exception {
-		wu.selectValueFromDropDown(getDriver(), payType, payType_Text);
+		wu.selectValueFromDropDown(getDriver(), basePayType, payType_Text);
 	}
 	
 	@FindBy(name="zzreqICPTarget_RTiCustomReq")
 	private WebElement icpTarget;
 	public void enterICPTarget(String icpTarget_Text)throws Exception {
-		wu.sendKeysToWebElement(getDriver(), icpTarget, icpTarget_Text);
+		wu.selectValueFromDropDown(getDriver(), icpTarget, icpTarget_Text);
 	}
 	
 	@FindBy(name="typeOfFulltime_RTiReq")
@@ -193,10 +201,11 @@ public class ReqsCreateCorpAndGlobalPage extends RequisitionsPage {
 	private WebElement autoAssignMultipleOwners;
 	
 	
-	@FindBy(name="_recruiterID00004010_RTiReq_ms_ac_sf")
+	@FindBy(xpath="//textarea[@name='_recruiterID00004010_RTiReq_ms_ac_sf']")
 	private WebElement hiringmgr1;
 	public void enterHiringmgr1(String hiringmgr1_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), hiringmgr1, hiringmgr1_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), hiringmgr1);
 	}
 	
 	@FindBy(name="_recruiterID00004020_RTiReq")
@@ -230,83 +239,106 @@ public class ReqsCreateCorpAndGlobalPage extends RequisitionsPage {
 		wu.selectValueFromDropDown(getDriver(), alternatePostingLocations, alternatePostingLocations_Text);
 	}
 	
-	@FindBy(xpath="//*[@id='description_RTiReq_ifr']")
-	private WebElement externalDescription;
-	public void enterExternalDescription(String externalDescription_Text)throws Exception {
-		wu.iframesSwitchToChild(getDriver(), externalDescription);
-		wu.sendKeysToWebElement(getDriver(), externalDescription, externalDescription_Text);
-		wu.iframesSwitchToParent(getDriver());
+	
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_description_RTiReq']/a")
+	private WebElement externalDescriptionLink;
+	public void clickExternalDescriptionLink() throws Exception{
+		wu.clickWebElement(getDriver(), externalDescriptionLink);
 	}
 	
-	@FindBy(xpath="//*[@id='requirements_RTiReq_ifr']")
-	private WebElement externalQualifications;
-	public void enterExternalQualifications(String externalQualifications_Text)throws Exception {
-		wu.iframesSwitchToChild(getDriver(), externalQualifications);
-		wu.sendKeysToWebElement(getDriver(), externalQualifications, externalQualifications_Text);
-		wu.iframesSwitchToParent(getDriver());
+	@FindBy(id="description_RTiReq")
+	private WebElement externalDescriptionText;
+	public void enterExternalDescriptionText(String text) throws Exception{
+		wu.sendKeysToWebElement(getDriver(), externalDescriptionText,text);
 	}
 	
-	@FindBy(xpath="//*[@id='internalDescription_RTiReq_ifr']")
-	private WebElement internalDescription;
-	public void enterInternalDescription(String internalDescription_Text)throws Exception {
-		wu.iframesSwitchToChild(getDriver(),internalDescription);
-		wu.sendKeysToWebElement(getDriver(), internalDescription, internalDescription_Text);
-		wu.iframesSwitchToParent(getDriver());
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_requirements_RTiReq']/a")
+	private WebElement externalQualificationsLink;
+	public void clickExternalQualificationsLink() throws Exception{
+		wu.clickWebElement(getDriver(), externalQualificationsLink);
 	}
 	
-	@FindBy(xpath="//*[@id='zzreqInternalQualifications_RTiCustomReq_ifr']")
-	private WebElement internalQualifications;
-	public void enterInternalQualifications(String internalQualifications_Text)throws Exception {
-		wu.iframesSwitchToChild(getDriver(), internalQualifications);
-		wu.sendKeysToWebElement(getDriver(), internalQualifications, internalQualifications_Text);
-		wu.iframesSwitchToParent(getDriver());
+	@FindBy(id="requirements_RTiReq")
+	private WebElement externalQualificationsText;
+	public void enterExternalQualificationsText(String text) throws Exception{
+		wu.sendKeysToWebElement(getDriver(), externalQualificationsText,text);
+	}
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_internalDescription_RTiReq']/a")
+	private WebElement internalDescriptionLink;
+	public void clickInternalDescriptionLink() throws Exception{
+		wu.clickWebElement(getDriver(), internalDescriptionLink);
 	}
 	
+	@FindBy(id="internalDescription_RTiReq")
+	private WebElement internalDescriptionText;
+	public void enterInternalDescriptionText(String text) throws Exception{
+		wu.sendKeysToWebElement(getDriver(), internalDescriptionText,text);
+	}
+	
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_zzreqInternalQualifications_RTiCustomReq']/a")
+	private WebElement internalQualificationsLink;
+	public void clickInternalQualificationsLink() throws Exception{
+		wu.clickWebElement(getDriver(), internalQualificationsLink);
+	}
+	
+	@FindBy(id="zzreqInternalQualifications_RTiCustomReq")
+	private WebElement internalQualificationsText;
+	public void enterInternalQualificationsText(String text) throws Exception{
+		wu.sendKeysToWebElement(getDriver(), internalQualificationsText,text);
+	}
 	@FindBy(xpath="//textarea[@name='approver1ID_RTiReq_ms_ac_sf']")
 	private WebElement approver1;
 	public void enterApprover1(String approver1_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver1, approver1_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver1);
 	}
 	
 	@FindBy(xpath="//textarea[@name='approver2ID_RTiReq_ms_ac_sf']")
 	private WebElement approver2;
 	public void enterApprover2(String approver2_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver2, approver2_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver2);
 	}
 	
 	@FindBy(xpath="//textarea[@name='approver3ID_RTiReq_ms_ac_sf']")
 	private WebElement approver3;
 	public void enterApprover3(String approver3_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver3, approver3_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver3);
 	}
 	
 	@FindBy(xpath="//textarea[@name='approver4ID_RTiReq_ms_ac_sf']")
 	private WebElement approver4;
 	public void enterApprover4(String approver4_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver4, approver4_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver4);
 	}
 	
 	@FindBy(xpath="//textarea[@name='approver5ID_RTiReq_ms_ac_sf']")
 	private WebElement approver5;
 	public void enterApprover5(String approver5_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver5, approver5_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver5);
 	}
 	
 	@FindBy(xpath="//textarea[@name='approver6ID_RTiReq_ms_ac_sf']")
 	private WebElement approver6;
 	public void enterApprover6(String approver6_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver6, approver6_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver6);
 	}
 	
 	@FindBy(xpath="//textarea[@name='approver7ID_RTiReq_ms_ac_sf']")
 	private WebElement approver7;
 	public void enterApprover7(String approver7_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver7, approver7_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver7);
 	}
 	@FindBy(xpath="//textarea[@name='approver8ID_RTiReq_ms_ac_sf']")
 	private WebElement approver8;
 	public void enterApprover8(String approver8_Text)throws Exception {
 		wu.sendKeysToWebElement(getDriver(), approver8, approver8_Text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver8);
 	}
 	@FindBy(name="_reqform_create2_button")
 	private WebElement create;
@@ -314,5 +346,17 @@ public class ReqsCreateCorpAndGlobalPage extends RequisitionsPage {
 		wu.clickWebElement(getDriver(), create);
 	}
 	
+	public void clickReqCreateCorpGlobalAlertAccept() {
+		wu.clickOnAlertToAccept(getDriver());
+	}
+	public void clickReqCreateCorpGlobalAlertDismiss() {
+		wu.clickOnAlertToAccept(getDriver());
+	}
+	@FindBy(xpath="/html/body/form/table/tbody/tr[3]/td/table/tbody/tr/td[3]/table/tbody/tr[1]/td/table/tbody/tr[3]/td/div/table/tbody/tr/td[1]/table/tbody/tr/td/div/div/table/tbody/tr[6]/td/table/tbody/tr[1]/td/table/tbody/tr/td[3]/span")
+	private WebElement requisitionNumber;
+	public String readRequisitionNumber(){
+		String text=wu.getTextFromWebElement(getDriver(), requisitionNumber);
+		return text;
+	}	
 	
 }

@@ -1,4 +1,4 @@
-package com.sempra.hr.cucumber.frwk.sd.test;
+package com.sempra.hr.cucumber.frwk.sd;
 
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -6,17 +6,17 @@ import org.slf4j.LoggerFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
 import com.sempra.hr.cucumber.frwk.datatable.EligibilityTestData;
+import com.sempra.hr.cucumber.frwk.datatable.PreConditionDataTable;
+import com.sempra.hr.cucumber.frwk.datatable.CucumberContext;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.EnrollmentsPage;
 import com.sempra.hr.cucumber.frwk.pageobjects.benefits.LifeEventsPage;
 import com.sempra.hr.cucumber.frwk.sd.BasicStepDefns;
 import com.sempra.hr.cucumber.frwk.testdrivers.WebDriverFactory;
 import com.sempra.hr.cucumber.frwk.util.FrameworkConstants;
 
-import cucumber.api.DataTable;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -32,38 +32,18 @@ public class EligibilityStepDefns extends BasicStepDefns {
 	private EnrollmentsPage enrlPage;
 	private static final Logger logger = LoggerFactory.getLogger(EligibilityStepDefns.class);
 
-	public EligibilityStepDefns(WebDriverFactory driverFactory) throws Exception { // Cucumber runtime creates a default instance of this class
-		super("EligibilityWorkFlow", driverFactory);
+	public EligibilityStepDefns(CucumberContext cucContext) throws Exception { // Cucumber runtime creates a default instance of this class
+		super("EligibilityWorkFlow",cucContext);
 	}
 
-	@Given("^I am on Home Page as Admin$")
-	public void i_am_on_Home_Page_as_Admin(DataTable dtObj) throws Exception {
-		// Initialize Scenario - setsPrecondition data, Launches the Browser, Logins as a given user & return Test data object
-		etdObj=initializeScenario(EligibilityTestData.class, dtObj);
+	@And("^I click on Life Events$")  // Workflow - Decision Step, decides the type of TestData/Pojo
+	public void i_click_on_Life_Events() throws Exception {
+		etdObj=retrieveTestData(EligibilityTestData.class); 
 		// Set Helix Test case id to testcase Info
 		trdObj.setTestCaseRecordID(etdObj.getHelixTestScriptId());
-		// Initialize the Landing page after Login
-		lePage=new LifeEventsPage(this.getDriver());
-	}
-
-	@When("^I click on People from the Menu bar$")
-	public void i_click_on_People_from_the_Menu_bar() throws Exception {
-		lePage.click_PeopleMenu();
-		logExtentScreenCapture(LogStatus.PASS, "Click on People from the Menu Bar",
-				"Expected: People Menu should be displayed | Actual: People Menu is displayed successfully");
-
-	}
-
-	@And("^I click on Benefits from the list$")
-	public void i_click_on_Benefits_from_the_list() throws Exception {
-		lePage.click_Benefits();
-		logExtentScreenCapture(LogStatus.PASS, "Click on Benefits from the list",
-				"Expected: Benefits Sub Menu should be displayed | Actual: Benefits Sub Menu is displayed successfully");
-	}
-
-	@And("^I click on Life Events$")
-	public void i_click_on_Life_Events() throws Exception {
-
+		// Intialize the PageObject you are trying to use
+		lePage=new LifeEventsPage(getDriver());
+			
 		lePage.click_LifeEventsMenuItem();
 		logExtentScreenCapture(LogStatus.PASS, "Click on Life Events from the list",
 				"Expected: Life Events should be clicked and Employee ID search page should be displayed | Actual: Employee ID search Page is displayed successfully");

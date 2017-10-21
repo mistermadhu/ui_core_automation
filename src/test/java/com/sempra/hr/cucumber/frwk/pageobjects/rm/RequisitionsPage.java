@@ -21,18 +21,14 @@ public class RequisitionsPage extends ADPHomePage {
 	}
 	
 	public void click_Reqs() throws Exception{
-		wu.isElementVisible(getDriver(), reqs);
 		wu.clickWebElement(getDriver(), reqs);
 	}
 	
 	public void click_CreateCorpAndGlobal() throws Exception{
-		wu.isElementVisible(getDriver(), createCorpAndGlobal);
 		wu.clickWebElement(getDriver(), createCorpAndGlobal);
 	}
-      public  RequisitionUtilitiesPage clickCreateUtilities() throws Exception {
-		wu.isElementVisible(getDriver(), createUtilitiesMenuItem);
+    public  void click_CreateUtilities() throws Exception {
 		wu.clickWebElement(getDriver(), createUtilitiesMenuItem);
-		return new RequisitionUtilitiesPage(getDriver());
-	} 
+   }  
 
 }

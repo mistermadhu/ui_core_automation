@@ -10,7 +10,7 @@
 </listeners>
   <test name="Sample Test">
   <parameter name="cucumber.features" value="src/test/resources/features/benefits/employeeEligibility.feature" />
-  <parameter name="cucumber.glue" value="com.sempra.hr.cucumber.frwk.sd.rm.test" />
+  <parameter name="cucumber.glue" value="com.sempra.hr.cucumber.frwk.sd" />
   <parameter name="cucumber.tags" value="@Regression" />
   <parameter name="testdata.file" value="Eligibility_TestData.xlsx" />
   <parameter name="isCommon" value="false" />

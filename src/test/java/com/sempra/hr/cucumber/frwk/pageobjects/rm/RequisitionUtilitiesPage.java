@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,36 +15,148 @@ import org.slf4j.LoggerFactory;
 public class RequisitionUtilitiesPage extends RequisitionsPage{
 	
 	private static final Logger logger = LoggerFactory.getLogger(RequisitionsPage.class);
+	@FindBy(name = "gridControl2_RTiReq")
+	protected WebElement unionJob;	
+	@FindBy(name = "gridControl_RTiReq")
+	private WebElement ECRenewalORQuickHire;	
+	@FindBy(name = "zzreqSendtoPOS_RTiCustomReq")
+	private WebElement sendToPOS;	
+	@FindBy(name = "zzreqRV_RTiCustomReq")
+	private WebElement RV;	
+	@FindBy(name = "numOpenings_RTiReq_numberCtrl")
+	private WebElement numberOfPositions;
+	@FindBy(xpath="//select[@name='companyCode_RTiReq']")
+	private WebElement company;
+	@FindBy(xpath="//select[@name='payGroupCode_RTiReq']")
+	private WebElement payGroup;
+	@FindBy(xpath="//textarea[@name='departmentCode_RTiReq_ms_ac_sf']")
+	private WebElement department;
+	@FindBy(name = "zzreqDivisionSempra_RTiCustomReq")
+	private WebElement division;
+	@FindBy(name = "zzreqDivisionSVPVP_RTiCustomReq")
+	private WebElement divisionSVPORVP;	
+	@FindBy(xpath="//textarea[@name='costNumCode_RTiReq_ms_ac_sf']")
+	private WebElement CostCenter;	
+	@FindBy(name = "zzreqRegionSectionCode_RTiCustomReq")
+	private WebElement regionSelectionCode;
+	@FindBy(name = "zzreqBudgetedPosition_RTiCustomReq")
+	private WebElement budgetedPosition;	
+	@FindBy(name = "zzreqSharedServices2_RTiCustomReq")
+	private WebElement sharedServices;	
+	@FindBy(name = "zzreqEligibleForRelocation_RTiCustomReq")
+	private WebElement eligibleForRelocation;
+	@FindBy(name = "erpBonusType_RTiReq")
+	private WebElement eligibleForReferral;	
+	@FindBy(name = "zzreqReferralAmount_RTiCustomReq")
+	private WebElement referralAmount;
+	@FindBy(name = "gridControl3_RTiReq")
+	private WebElement dotSafetySensitive;
+	
+	@FindBy(xpath = "//textarea[@name='locationCode_RTiReq_ms_ac_sf']")
+	private WebElement location;
+	
+	@FindBy(xpath = "//textarea[@name='zzreqDesiredBldgSeatLocation_RTiCustomReq']")
+	private WebElement desiredBuildingORSeatLocation;
+	
+	@FindBy(xpath = "//textarea[@name='positionCode_RTiReq_ms_ac_sf']")
+	private WebElement internalJobTitleORJobCode;
+	@FindBy(name = "ptitle_RTiReq")
+	private WebElement externalPublishedJobTitle;	
+	@FindBy(name = "payType_RTiReq")
+	private WebElement basePayType;
+	@FindBy(name = "typeOfFulltime_RTiReq")
+	private WebElement positionType;
+	@FindBy(name = "zzregTemp_RTiCustomReq")
+	private WebElement regularOrTemp;
+	@FindBy(name = "zzreqEmployeeClass_RTiCustomReq")
+	private WebElement employeeClass;
+	@FindBy(name = "zzreqECDuration_RTiCustomReq")
+	private WebElement ecDuration;
+	@FindBy(name = "zzreqAgencyConversionName_RTiCustomReq")
+	private WebElement agencyConverionName;	
+	@FindBy(xpath = "//textarea[@name='zzreqBizJustificationforPosition2_RTiCustomReq']")
+	private WebElement businessJustificationForPosition;
+	@FindBy(name = "typeOfNew_RTiReq")
+	private WebElement replacementOrAddition;	
+	@FindBy(xpath = "//textarea[@name='_recruiterID00004010_RTiReq_ms_ac_sf']")
+	private WebElement hiringManager1;	
+	@FindBy(name = "_recruiterID00004020_RTiReq")
+	private WebElement recruiter;	
+	@FindBy(name = "grp_RTiReq")
+	private WebElement areaOfInterest;	
+	@FindBy(name = "postingLocationCode_RTiReq")
+	private WebElement postingLocation;	
+	@FindBy(id = "description_RTiReq_ifr")
+	private WebElement externalDescription;	
+	@FindBy(id = "requirements_RTiReq_ifr")
+	private WebElement externalRequirement;	
+	@FindBy(id = "zzreqInternalQualifications_RTiCustomReq_ifr")
+	private WebElement internalQualification;
+	@FindBy(id = "internalDescription_RTiReq_ifr")
+	private WebElement internalDescription;
+	
+	@FindBy(xpath = "//textarea[@name='approver1ID_RTiReq_ms_ac_sf']")
+	private WebElement approver1;
+	@FindBy(id = "_reqform_create2_button")
+	private WebElement createButton;
+	
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_description_RTiReq']/a")
+	private WebElement 	externalDescriptionLink;
+	
+	@FindBy(xpath="//textarea[@name='description_RTiReq']")
+	private WebElement 	externalDescriptionTextArea;
+	
+
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_requirements_RTiReq']/a")
+	private WebElement 	externalRequirmentsLink;
+	
+	@FindBy(xpath="//textarea[@name='requirements_RTiReq']")
+	private WebElement 	externalRequirmentsTextArea;	
+	
+	
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_internalDescription_RTiReq']/a")
+	private WebElement 	internalDescriptionLink;
+	
+	@FindBy(xpath="//textarea[@name='internalDescription_RTiReq']")
+	private WebElement 	internalDescriptionTextArea;	
+	
+	@FindBy(xpath="//div[@id='tinymce_rmvlink_zzreqInternalQualifications_RTiCustomReq']/a")
+	private WebElement 	internalQualificationLink;
+	
+	@FindBy(xpath="//textarea[@name='zzreqInternalQualifications_RTiCustomReq']")
+	private WebElement 	internalQualificationTextArea;
+	
+	
+	@FindBy(xpath="/html/body/form/table/tbody/tr[3]/td/table/tbody/tr/td[3]/table/tbody/tr[1]/td/table/tbody/tr[3]/td/div/table/tbody/tr/td[1]/table/tbody/tr/td/div/div/table/tbody/tr[6]/td/table/tbody/tr[1]/td/table/tbody/tr/td[3]/span")
+	private WebElement 	reqNumberCreated;
+	
+	
 	
 	public RequisitionUtilitiesPage(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	@FindBy(name = "gridControl2_RTiReq")
-	protected WebElement unionJob;
+
 	public void selectUnionJob(String text) throws Exception 
 		{
 			wu.selectValueFromDropDown(getDriver(), unionJob, text);
 		}
 	
-	@FindBy(name = "gridControl_RTiReq")
-	private WebElement ECRenewalORQuickHire;
+
 	
 	public void selectECRenewalORQuickHire(String text) throws Exception
 		{
 			wu.selectValueFromDropDown(getDriver(), ECRenewalORQuickHire, text);
 		}
 	
-	@FindBy(name = "zzreqSendtoPOS_RTiCustomReq")
-	private WebElement sendToPOS;
+
 	
 	public void selectSendToPOS(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), sendToPOS, text);
 	}
 	
-	@FindBy(name = "zzreqRV_RTiCustomReq")
-	private WebElement RV;
+
 	
 	public void selectRV(String text) throws Exception
 	{
@@ -51,280 +164,283 @@ public class RequisitionUtilitiesPage extends RequisitionsPage{
 	}
 	
 	
-	@FindBy(name = "numOpenings_RTiReq_numberCtr")
-	private WebElement numberOfPositions;
+
 	
 	public void enterNumberOfPositions(String text) throws Exception
 	{
+		wu.clearText(getDriver(), numberOfPositions);
 		wu.sendKeysToWebElement(getDriver(), numberOfPositions, text);
 	}
 	
-	@FindBy(name = "companyCode_RTiReq")
-	private WebElement company;
+
 	public void selectCompany(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), company, text);
 	}
 	
-	@FindBy(name = "payGroupCode_RTiReq")
-	private WebElement payGroup;
+
 	public void selectPayGroup(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), payGroup, text);
 	}
 	
-	@FindBy(name = "departmentCode_RTiReq_ms_ac_sf")
-	private WebElement department;
+
 	public void enterDepartment(String text) throws Exception
 	{
-		wu.sendKeysToWebElement(getDriver(), department, text);
-	}
-	
-	
-	
-	@FindBy(name = "zzreqDivisionSempra_RTiCustomReq")
-	private WebElement division;
+		//wu.clickWebElement(getDriver(), department);
+		wu.sendKeysToWebElement(getDriver(), department,text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), department);
+		
+	}	
+
 	public void selectDivision(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), division, text);
-	}	
-	
-	@FindBy(name = "zzreqDivisionSVPVP_RTiCustomReq")
-	private WebElement divisionSVPORVP;
+	}		
+
 	public void selectDivisionSVPorVP(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), divisionSVPORVP, text);
-	}	
-	
-	
-	@FindBy(name = "costNumCode_RTiReq_ms_ac_sf")
-	private WebElement CostCenter;
+	}		
+
 	public void enterCostCenter(String text) throws Exception
 	{
-		wu.sendKeysToWebElement(getDriver(), CostCenter, text);
-	}
-		
-	@FindBy(name = "zzreqRegionSectionCode_RTiCustomReq")
-	private WebElement regionSelectionCode;
+		wu.sendKeysToWebElement(getDriver(), CostCenter,text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), CostCenter);
+	}		
+
 	public void selectRegionSelectionCode(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), regionSelectionCode, text);
 	}
 	
-	
-	@FindBy(name = "zzreqBudgetedPosition_RTiCustomReq")
-	private WebElement budgetedPosition;
 	public void selectBudgetedPosition(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), budgetedPosition, text);
-	}
-	
-	@FindBy(name = "zzreqSharedServices2_RTiCustomReq")
-	private WebElement sharedServices;
+	}	
+
 	public void enterSharedServices(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), sharedServices, text);
 	}
 	
-	@FindBy(name = "zzreqEligibleForRelocation_RTiCustomReq")
-	private WebElement eligibleForRelocation;
 	public void selectEligibleForRelocation(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), eligibleForRelocation, text);
-	}
-	
-	@FindBy(name = "erpBonusType_RTiReq")
-	private WebElement eligibleForReferral;
+	}	
+
 	public void selectEligibleForReferral(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), eligibleForReferral, text);
-	}	
-	
-	@FindBy(name = "zzreqReferralAmount_RTiCustomReq")
-	private WebElement referralAmount;
+	}		
+
 	public void selectReferralAmount(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), referralAmount, text);
-	}
-	
-	
-	
-	
-	@FindBy(name = "gridControl3_RTiReq")
-	private WebElement dotSafetySensitive;	
+	}	
+
 	public void selectDOTSafetySensitive(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), dotSafetySensitive, text);
 	}
 	
-	@FindBy(name = "locationCode_RTiReq_ms_ac_sf")
-	private WebElement location;
+
 	public void enterLocation(String text) throws Exception
 	{
+		wu.clickWebElement(getDriver(), location);
 		wu.sendKeysToWebElement(getDriver(), location, text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), location);
 	}
 	
-	@FindBy(name = "zzreqDesiredBldgSeatLocation_RTiCustomReq")
-	private WebElement desiredBuildingORSeatLocation;
+
 	public void enterDesiredBuildingORSeatLocation(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), desiredBuildingORSeatLocation, text);
 	}
 	
 	
-	@FindBy(name = "positionCode_RTiReq_ms_ac_sf")
-	private WebElement internalJobTitleORJobCode;
+	
 	public void enterInternalJobTitleORJobCode(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), internalJobTitleORJobCode, text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), internalJobTitleORJobCode);
 	}	
 	
 	
-	@FindBy(name = "ptitle_RTiReq")
-	private WebElement externalPublishedJobTitle;
+
 	public void enterExternalPublishedJobTitle(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), externalPublishedJobTitle, text);
 	}	
 	
-	
-	@FindBy(name = "payType_RTiReq")
-	private WebElement basePayType;
+
 	public void selectBasePayType(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), basePayType, text);
 	}	
 	
-	@FindBy(name = "typeOfFulltime_RTiReq")
-	private WebElement positionType;
+
 	public void selectPositionType(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), positionType, text);
 	}
 	
-	@FindBy(name = "zzregTemp_RTiCustomReq")
-	private WebElement regularOrTemp;	
+
 	public void selectRegularOrTemp(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), regularOrTemp, text);
 	}	
-	@FindBy(name = "zzreqEmployeeClass_RTiCustomReq")
-	private WebElement employeeClass;
+
 	public void selectEmployeeClass(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), employeeClass, text);
 	}	
 	
-	@FindBy(name = "zzreqECDuration_RTiCustomReq")
-	private WebElement ecDuration;
+
 	public void selectECduration(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), ecDuration, text);
 	}	
 	
-	
-	@FindBy(name = "zzreqAgencyConversionName_RTiCustomReq")
-	private WebElement agencyConverionName;
+
 	public void enterAgencyConversionName(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), agencyConverionName, text);
 	}
 	
-	@FindBy(name = "zzreqBizJustificationforPosition2_RTiCustomReq")
-	private WebElement businessJustificationForPosition;
+
 	public void enterBusinessJustificationForPosition(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), businessJustificationForPosition, text);
 	}
 	
-	@FindBy(name = "typeOfNew_RTiReq")
-	private WebElement replacementOrAddition;
+
+	
 	public void selectReplacementOrAddition(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), replacementOrAddition, text);
 	}	
 	
 	
-	@FindBy(name = "_recruiterID00004010_RTiReq_ms_ac_sf")
-	private WebElement hiringManager1;
+
 	public void enterHiringManager(String text) throws Exception
 	{
-		wu.sendKeysToWebElement(getDriver(), hiringManager1, text);
+		//wu.sendKeysToWebElement(getDriver(), hiringManager1, text);
+		//wu.sendKeysWithKeyBoardActions(getDriver(), hiringManager1);
+		
+		wu.sendKeysToWebElement(getDriver(), hiringManager1, "Ken");
+		Thread.sleep(1000);
+		hiringManager1.sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(1000);
+		hiringManager1.sendKeys(Keys.ARROW_DOWN);
+		Thread.sleep(1000);
+		hiringManager1.sendKeys(Keys.ENTER);		
 	}
 	
 	
-	@FindBy(name = "_recruiterID00004020_RTiReq")
-	private WebElement recruiter;
+
 	public void selectRecruiter(String text) throws Exception
 	{
-		wu.selectValueFromDropDown(getDriver(), recruiter, text);
+		wu.selectValueFromDropDown(getDriver(), recruiter, text);		
+		
 	}		
 	
-	@FindBy(name = "grp_RTiReq")
-	private WebElement areaOfInterest;
+
 	public void selectAreaOfInterest(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), areaOfInterest, text);
 	}	
 	
 	
-	@FindBy(name = "postingLocationCode_RTiReq")
-	private WebElement postingLocation;
+
 	public void selectPostingLocation(String text) throws Exception
 	{
 		wu.selectValueFromDropDown(getDriver(), postingLocation, text);
 	}	
 	
-	@FindBy(id = "description_RTiReq_ifr")
-	private WebElement externalDescription;
-	public void enterExternalDescription(String text) throws Exception
+
+/*	public void enterExternalDescription(String text) throws Exception
 	{
 		wu.iframesSwitchToChild(getDriver(), externalDescription);
 		wu.sendKeysToWebElement(getDriver(), externalDescription, text);
 		wu.iframesSwitchToParent(getDriver());
-	}	
+	}*/	
 	
-	@FindBy(id = "requirements_RTiReq_ifr")
-	private WebElement externalRequirement;	
-	public void enterExternalRequirement(String text) throws Exception
+	public void clickExternalDescriptionLink() throws Exception 
 	{
-		wu.iframesSwitchToChild(getDriver(), externalRequirement);
-		wu.sendKeysToWebElement(getDriver(), externalRequirement, text);
-		wu.iframesSwitchToParent(getDriver());
+		wu.clickWebElement(getDriver(), externalDescriptionLink);
 	}
 	
-	@FindBy(id = "internalDescription_RTiReq_ifr")
-	private WebElement internalDescription;
-	public void enterInternalDescription(String text) throws Exception
+	public void enterTextInExternalDescription(String text) throws Exception
 	{
-		wu.iframesSwitchToChild(getDriver(), internalDescription);
-		wu.sendKeysToWebElement(getDriver(), internalDescription, text);
-		wu.iframesSwitchToParent(getDriver());
+		//wu.clickWebElement(getDriver(), department);
+		wu.sendKeysToWebElement(getDriver(), externalDescriptionTextArea,text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), externalDescriptionTextArea);
+		
+	}
+	
+	public void clickExternalRequirmentLink() throws Exception 
+	{
+		wu.clickWebElement(getDriver(), externalRequirmentsLink);
+	}
+	
+	public void enterTextInExternalRequirment(String text) throws Exception
+	{
+		//wu.clickWebElement(getDriver(), department);
+		wu.sendKeysToWebElement(getDriver(), externalRequirmentsTextArea,text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), externalRequirmentsTextArea);
+		
 	}	
 	
-	@FindBy(id = "zzreqInternalQualifications_RTiCustomReq_ifr")
-	private WebElement internalQualification;
-	public void enterInternalQualification(String text) throws Exception
+	public void clickInternalDescriptionLink() throws Exception 
 	{
-		wu.iframesSwitchToChild(getDriver(), internalQualification);
-		wu.sendKeysToWebElement(getDriver(), internalQualification, text);
-		wu.iframesSwitchToParent(getDriver());
-	}	
+		wu.clickWebElement(getDriver(), internalDescriptionLink);
+	}
+	
+	public void enterTextInInternalDescriptionLink(String text) throws Exception
+	{
+		//wu.clickWebElement(getDriver(), department);
+		wu.sendKeysToWebElement(getDriver(), internalDescriptionTextArea,text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), internalDescriptionTextArea);
 		
-	@FindBy(name = "approver1ID_RTiReq_ms_ac_sf")
-	private WebElement approver1;
+	}
+
+	public void clickIinternalQualificationLink() throws Exception 
+	{
+		wu.clickWebElement(getDriver(), internalQualificationLink);
+	}
+	
+	public void enterTextIninternalQualificationLink(String text) throws Exception
+	{
+		//wu.clickWebElement(getDriver(), department);
+		wu.sendKeysToWebElement(getDriver(), internalQualificationTextArea,text);
+		wu.sendKeysWithKeyBoardActions(getDriver(), internalQualificationTextArea);
+		
+	}
 	
 	public void enterApprover1(String text) throws Exception
 	{
 		wu.sendKeysToWebElement(getDriver(), approver1, text);
-	}
-	
-	
-	@FindBy(id = "_reqform_create2_button")
-	private WebElement createButton;
+		wu.sendKeysWithKeyBoardActions(getDriver(), approver1);
+	}	
+
 	public void clickCreateButton() throws Exception
 	{
 		wu.clickWebElement(getDriver(), createButton);
 	}
+	public void clickOnAlertToAccept() throws Exception
+	{
+		wu.clickOnAlertToAccept(getDriver());
+	}
+	
+	public String getTheRequisitionNumberCreatedForUtilities() {
+		
+		String reqNumber = wu.getTextFromWebElement(getDriver(), reqNumberCreated);
+		logger.info("Requision Number Generated:  " + reqNumber );
+		
+		return reqNumber;
+	}
+	
+	
 	
 }

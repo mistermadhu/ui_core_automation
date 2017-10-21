@@ -101,15 +101,15 @@ public class AESEncryption {
     
     
     public static void main(String[] args) throws Exception {
-        String plainTextPassword = "xxxxxx";
+        String plainTextPassword = "717CCED269EB1D984F953ECA444840634814CADB4FCDAB7FCB6AC2C17EDC4691";
         //SecretKey secretKey=getSecretEncryptionKey();
         String encryptedTextInHex = encryptText(plainTextPassword, FrameworkConstants.HEXX);
-        String decryptedTextInHex = decryptText(encryptedTextInHex, FrameworkConstants.HEXX);
+        String decryptedTextInHex = decryptText("49BC901F154770AE8B2B510F5158CD68", FrameworkConstants.HEXX);
         
-        logger.info("Original Text:" + plainTextPassword);
-        logger.info("AES Key (Hex Form):"+FrameworkConstants.HEXX);//bytesToHex(secreetKey.getEncoded()));
-        logger.info("Encrypted Text (Hex Form):"+encryptedTextInHex);
-        logger.info("Descrypted Text:"+decryptedTextInHex);
+        System.out.println("Original Text:" + plainTextPassword);
+        System.out.println("AES Key (Hex Form):"+FrameworkConstants.HEXX);//bytesToHex(secreetKey.getEncoded()));
+        System.out.println("Encrypted Text (Hex Form):"+encryptedTextInHex);
+        System.out.println("Descrypted Text:"+decryptedTextInHex);
         
         
         

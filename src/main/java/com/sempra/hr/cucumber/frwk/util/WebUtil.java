@@ -3,7 +3,9 @@ package com.sempra.hr.cucumber.frwk.util;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,8 +34,8 @@ public class WebUtil {
 		}
 
 	}
-
-	public void sendKeysToWebElement(WebDriver driver, WebElement element, String text) {
+	
+   public void sendKeysToWebElement(WebDriver driver, WebElement element, String text) {
 		try {
 			isElementVisible(driver, element);
 			element.sendKeys(text);
@@ -42,7 +44,21 @@ public class WebUtil {
 		}
 
 	}
+	public void sendKeysWithKeyBoardActions( WebDriver driver,WebElement element) {
+		try {
+			isElementVisible(driver, element);
+			//element.sendKeys(Keys.SPACE);
+			Thread.sleep(2000);
+			element.sendKeys(Keys.ARROW_DOWN);
+			Thread.sleep(2000);
+			element.sendKeys(Keys.ENTER);
+			element.click();
+		} catch (Exception e) {
+			// Screenshot code
+		}
 
+	}
+	
 	public void isElementVisible(WebDriver driver, WebElement element) {
 
 		WebDriverWait wait = new WebDriverWait(driver, FrameworkConstants.LARGE_TIMEOUT);
@@ -112,5 +128,51 @@ public class WebUtil {
 		
 		
 	}
+    
+    public void clearText(WebDriver driver, WebElement element) {
+		try {
+			isElementVisible(driver, element);
+			element.clear();
+			
+		}catch(Exception e) {
+			// Screenshot code
+		}
+	}
+    
+    public String getTextFromWebElement(WebDriver driver, WebElement element) {
+    	String text = null;
+    	try {
+			isElementVisible(driver, element);
+			text=element.getText();
+			} catch (Exception e) {
+			// Screenshot code
+		}
+		return text; 
+    }
+    
+    public void clickOnAlertToAccept(WebDriver driver) {
+    	WebDriverWait wait = new WebDriverWait(driver, FrameworkConstants.LARGE_TIMEOUT);
+    	try {
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+    	}catch(Exception e) {
+    		//get ScreenShot
+    	}
+    	
+    }
+    
+    public void clickOnAlertToDismiss(WebDriver driver) {
+    	WebDriverWait wait = new WebDriverWait(driver, FrameworkConstants.LARGE_TIMEOUT);
+    	try {
+    		  wait.until(ExpectedConditions.alertIsPresent());
+              Alert alert = driver.switchTo().alert();
+              alert.dismiss();
+    	}catch(Exception e) {
+    		//get ScreenShot
+    	}
+    }
+    
 
+	
 }
